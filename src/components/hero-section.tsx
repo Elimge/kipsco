@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BarChart3, Brain, Users } from "lucide-react";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -46,13 +47,15 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Button size="lg" className="gap-2">
+        <Link href="/tests">
+          <Button size="lg" className="gap-2 cursor-pointer">
             Comenzar evaluación gratis
             <ArrowRight size={16} />
           </Button>
-          <Button size="lg" variant="outline">
-            Ver demo empresarial
-          </Button>
+        </Link>
+        <Button size="lg" variant="outline" className="cursor-pointer">
+          Ver demo empresarial
+        </Button>
         </motion.div>
 
         {/* Stats */}

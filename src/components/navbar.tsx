@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,9 +27,9 @@ export function Navbar() {
             <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Cómo funciona
             </a>
-            <a href="#tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Tests
-            </a>
+            </Link>
           </div>
 
           {/* CTA */}
@@ -49,10 +50,18 @@ export function Navbar() {
         {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden py-4 flex flex-col gap-4 border-t border-border">
-            <a href="#features" className="text-sm text-muted-foreground">Características</a>
-            <a href="#how-it-works" className="text-sm text-muted-foreground">Cómo funciona</a>
-            <a href="#tests" className="text-sm text-muted-foreground">Tests</a>
-            <Button size="sm" className="w-full">Comenzar gratis</Button>
+            <Link href="#features" className="text-sm text-muted-foreground">
+              Características
+            </Link>
+            <Link href="#how-it-works" className="text-sm text-muted-foreground">
+              Cómo funciona
+            </Link>
+            <Link href="/tests" className="text-sm text-muted-foreground">
+              Tests
+            </Link>
+            <Button size="sm" className="w-full">
+              Comenzar gratis
+            </Button>
           </div>
         )}
       </div>
