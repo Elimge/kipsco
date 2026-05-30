@@ -52,41 +52,67 @@ const DIMENSION_META: Record<Dimension, { label: string; description: string }> 
 } as const satisfies Record<Dimension, { label: string; description: string }>;
 
 const ROLE_PROFILES: Record<string, Partial<Record<Dimension, number>>> = {
-  "Frontend Developer": {
-    openness: 4,
-    conscientiousness: 4,
-    extraversion: 2,
-    logical: 4,
-  },
-  "Product Manager": {
-    extraversion: 4,
+  "Asesor Comercial": {
+    extraversion: 5,
     agreeableness: 4,
-    conscientiousness: 4,
-    openness: 3,
+    conscientiousness: 3,
+    neuroticism: 1,
   },
-  "UX Designer": {
-    openness: 5,
-    agreeableness: 4,
-    extraversion: 3,
-  },
-  "Data Analyst": {
-    conscientiousness: 5,
-    logical: 5,
-    numerical: 5,
-    neuroticism: 2,
-  },
-  "Tech Lead": {
-    extraversion: 4,
-    conscientiousness: 4,
-    openness: 4,
-    logical: 4,
-  },
-  "Scrum Master": {
+  "Coordinador de RRHH": {
     agreeableness: 5,
     extraversion: 4,
     conscientiousness: 4,
+    openness: 3,
   },
-};
+  "Auxiliar Administrativo": {
+    conscientiousness: 5,
+    agreeableness: 4,
+    neuroticism: 2,
+    extraversion: 2,
+  },
+  "Analista Financiero": {
+    conscientiousness: 5,
+    numerical: 5,
+    logical: 4,
+    neuroticism: 1,
+  },
+  "Jefe de Operaciones": {
+    conscientiousness: 5,
+    extraversion: 4,
+    logical: 4,
+    neuroticism: 1,
+  },
+  "Líder de Proyecto": {
+    extraversion: 4,
+    conscientiousness: 5,
+    agreeableness: 3,
+    openness: 3,
+  },
+  "Atención al Cliente": {
+    agreeableness: 5,
+    extraversion: 5,
+    neuroticism: 1,
+    conscientiousness: 3,
+  },
+  "Supervisor de Producción": {
+    conscientiousness: 5,
+    extraversion: 3,
+    logical: 4,
+    neuroticism: 2,
+  },
+  "Ejecutivo de Cuenta": {
+    extraversion: 5,
+    openness: 4,
+    agreeableness: 3,
+    conscientiousness: 4,
+  },
+  "Profesional de Marketing": {
+    openness: 5,
+    extraversion: 4,
+    conscientiousness: 3,
+    agreeableness: 3,
+  },
+} as const satisfies Record<string, Partial<Record<Dimension, number>>>;
 
 export function calculateScores(
   questions: Question[],
