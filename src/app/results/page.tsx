@@ -11,10 +11,20 @@ import { OverallProfile } from "@/components/results/overall-profile";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, RotateCcw } from "lucide-react";
 import Link from "next/link";
+import { PDFReport } from "@/components/results/pdf-report";
+import { exportResultsToPDF } from "@/services/pdf-export";
+import { Download } from "lucide-react";
 
 export default function ResultsPage() {
   const router = useRouter();
   const [result, setResult] = useState<AssessmentResult | null>(null);
+  const [isExporting, setIsExporting] = useState(false);
+
+  async function handleExport() {
+    setIsExporting(true);
+    await exportResultsToPDF("pdf-report", "kipsco-reporte-personalidad.pdf");
+    setIsExporting(false);
+  }
 
   useEffect(() => {
     const stored = localStorage.getItem("kipsco_result");
@@ -45,19 +55,32 @@ export default function ResultsPage() {
             <ArrowLeft size={16} />
             Volver a tests
           </Link>
-          <span className="text-sm font-medium">Resultados — Test de Personalidad Laboral</span>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="gap-2 text-muted-foreground"
-            onClick={() => {
-              localStorage.removeItem("kipsco_result");
-              router.push("/tests");
-            }}
-          >
-            <RotateCcw size={14} />
-            Repetir
-          </Button>
+          <span className="text-sm font-medium">
+            Resultados — Test de Personalidad Laboral
+          </span>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="gap-2 text-muted-foreground"
+              onClick={() => {
+                localStorage.removeItem("kipsco_result");
+                router.push("/tests");
+              }}
+            >
+              <RotateCcw size={14} />
+              Repetir
+            </Button>
+            <Button
+              size="sm"
+              className="gap-2"
+              onClick={handleExport}
+              disabled={isExporting}
+            >
+              <Download size={14} />
+              {isExporting ? "Generando..." : "Descargar PDF"}
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -69,6 +92,11 @@ export default function ResultsPage() {
           <StrengthsPanel result={result} />
           <RoleCompatibilityPanel result={result} />
         </div>
+      </div>
+
+      {/* PDF oculto para exportación */}
+      <div className="absolute -left-[9999px] -top-[9999px] overflow-hidden">
+        <PDFReport result={result} />
       </div>
     </main>
   );
