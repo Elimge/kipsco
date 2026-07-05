@@ -3,6 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, ArrowRight, Brain, Zap } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tests disponibles",
+  description:
+    "Explora nuestras evaluaciones psicométricas y cognitivas. Test de personalidad laboral, aptitud cognitiva y más.",
+  alternates: {
+    canonical: "https://kipsco.com/tests",
+  },
+};
 
 const tests = [
   {

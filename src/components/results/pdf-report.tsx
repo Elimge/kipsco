@@ -16,12 +16,13 @@ export function PDFReport({ result }: Props) {
       id="pdf-report"
       style={{
         width: "794px",
-        height: "1123px",
+        minHeight: "1123px",
+        position: "relative",
         boxSizing: "border-box",
         display: "flex",
         flexDirection: "column",
         backgroundColor: "#ffffff",
-        padding: "40px 60px 40px 60px",
+        padding: "40px 60px 100px 60px",
         fontFamily: "Arial, sans-serif",
         color: "#18181b",
       }}
@@ -352,9 +353,12 @@ export function PDFReport({ result }: Props) {
       {/* Footer */}
       <div
         style={{
+          position: "absolute",
+          bottom: "40px",
+          left: "60px",
+          right: "60px",
           borderTop: "2px solid #e4e4e7",
           paddingTop: "16px",
-          marginTop: "auto",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
