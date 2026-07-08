@@ -14,6 +14,7 @@ import Link from "next/link";
 import { PDFReport } from "@/components/results/pdf-report";
 import { exportResultsToPDF } from "@/services/pdf-export";
 import { Download } from "lucide-react";
+import { User } from "lucide-react";
 
 export default function ResultsPage() {
   const router = useRouter();
@@ -71,6 +72,12 @@ export default function ResultsPage() {
               <RotateCcw size={14} />
               Repetir
             </Button>
+            <Link href="/profile">
+              <Button variant="outline" size="sm" className="gap-2">
+                <User size={14} />
+                Ver perfil
+              </Button>
+            </Link>
             <Button
               size="sm"
               className="gap-2"
