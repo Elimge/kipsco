@@ -66,7 +66,7 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           {[
-            { icon: Brain, label: "Tests validados", value: "4+" },
+            { icon: Brain, label: "Tests validados", value: "2+" },
             { icon: BarChart3, label: "Dimensiones", value: "12+" },
             { icon: Users, label: "Perfiles laborales", value: "20+" },
           ].map(({ icon: Icon, label, value }) => (

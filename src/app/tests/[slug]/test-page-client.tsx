@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { personalityTest } from "@/data/personality-test";
+import { cognitiveTest } from "@/data/cognitive-test";
 import { useAssessment } from "@/hooks/useAssessment";
 import { calculateScores } from "@/lib/scoring";
 import { QuestionCard } from "@/components/question-card";
@@ -11,6 +12,7 @@ import { Test } from "@/types/assessment";
 
 const TESTS: Record<string, Test> = {
   "test-personalidad-laboral": personalityTest,
+  "test-aptitud-cognitiva": cognitiveTest,
 };
 
 export function TestPageClient({ slug }: { slug: string }) {

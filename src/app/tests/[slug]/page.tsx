@@ -10,11 +10,14 @@ export async function generateMetadata({
 
   const titles: Record<string, string> = {
     "test-personalidad-laboral": "Test de Personalidad Laboral",
+    "test-aptitud-cognitiva": "Test de Aptitud Cognitiva",
   };
 
   const descriptions: Record<string, string> = {
     "test-personalidad-laboral":
       "Evalúa tus cinco grandes dimensiones de personalidad en el contexto profesional. Descubre tu estilo de trabajo y compatibilidad con perfiles laborales colombianos.",
+    "test-aptitud-cognitiva":
+      "Mide tu razonamiento lógico, numérico y verbal con 20 ejercicios diseñados para entornos profesionales reales.",
   };
 
   return {
@@ -27,7 +30,10 @@ export async function generateMetadata({
 }
 
 export function generateStaticParams() {
-  return [{ slug: "test-personalidad-laboral" }];
+  return [
+    { slug: "test-personalidad-laboral" },
+    { slug: "test-aptitud-cognitiva" },
+  ];
 }
 
 export default async function TestPage({

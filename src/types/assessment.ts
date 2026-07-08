@@ -22,6 +22,7 @@ export interface Question {
   type: QuestionType;
   text: string;
   dimension?: Dimension;
+  correctOptionId?: string;
   options: Option[];
 }
 

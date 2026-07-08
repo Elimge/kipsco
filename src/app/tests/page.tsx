@@ -32,10 +32,10 @@ const tests = [
     description:
       "Mide tu razonamiento lógico, numérico y verbal con ejercicios diseñados para entornos profesionales reales.",
     duration: "15-20 min",
-    questions: 25,
+    questions: 20,
     category: "Cognitivo",
     icon: Zap,
-    available: false,
+    available: true,
   },
 ];
 
