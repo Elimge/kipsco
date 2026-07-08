@@ -56,8 +56,11 @@ export function Navbar() {
             <Link href="#how-it-works" className="text-sm text-muted-foreground">
               Cómo funciona
             </Link>
-            <Link href="/tests" className="text-sm text-muted-foreground">
+            <Link href="/tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Tests
+            </Link>
+            <Link href="/recruiter" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Reclutadores
             </Link>
             <Button size="sm" className="w-full">
               Comenzar gratis

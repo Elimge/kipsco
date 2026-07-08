@@ -61,3 +61,10 @@ export interface AssessmentResult {
   roleCompatibility: RoleCompatibility[];
   overallProfile: string;
 }
+
+export interface Candidate {
+  id: string;
+  name: string;
+  addedAt: string;
+  result: AssessmentResult;
+}
