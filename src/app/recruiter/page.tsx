@@ -39,7 +39,7 @@ export default function RecruiterPage() {
   return (
     <main className="min-h-screen bg-muted/20">
       {/* Nav */}
-      <div className="bg-background border-b border-border sticky top-0 z-50">
+      <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link
             href="/"
@@ -57,6 +57,9 @@ export default function RecruiterPage() {
             <Plus size={14} />
             Agregar candidato
           </Button>
+          <p className="text-xs text-muted-foreground max-w-xs text-center mt-3">
+            Pide al candidato que complete un test en Kipsco y comparta su URL de perfil contigo.
+          </p>
         </div>
       </div>
 
@@ -249,7 +252,7 @@ function CandidateCard({
           onClick={onToggle}
           className={`w-5 h-5 rounded border-2 shrink-0 mt-0.5 flex items-center justify-center transition-colors cursor-pointer ${
             isSelected
-              ? "bg-primary border-primary"
+              ? "bg-primary border-primary text-primary-foreground"
               : "border-border hover:border-primary"
           }`}
         >
@@ -257,7 +260,7 @@ function CandidateCard({
             <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
               <path
                 d="M1 4L3.5 6.5L9 1"
-                stroke="white"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
               />

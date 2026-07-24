@@ -16,7 +16,10 @@ export function HeroSection() {
           transition={{ duration: 0.5 }}
         >
           <Badge variant="secondary" className="mb-6">
-            🧠 Evaluación psicométrica moderna
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-pink-100">
+              <Brain className="h-3.5 w-3.5 text-pink-600" />
+            </span>
+            Evaluación psicométrica moderna
           </Badge>
         </motion.div>
 

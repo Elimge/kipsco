@@ -101,14 +101,14 @@ export default function TestsPage() {
                 </p>
                 {test.available ? (
                   <Link href={`/tests/${test.id}`}>
-                    <Button className="gap-2">
+                    <Button className="gap-2 cursor-pointer">
                       Comenzar test
                       <ArrowRight size={16} />
                     </Button>
                   </Link>
-                ) : (
-                  <Button disabled variant="outline">
-                    No disponible aún
+                  ) : (
+                  <Button disabled variant="outline" className="cursor-not-allowed">
+                    Próximamente
                   </Button>
                 )}
               </CardContent>

@@ -34,7 +34,7 @@ export function StrengthsPanel({ result }: Props) {
                 {result.topStrengths.map((s) => (
                   <li
                     key={s}
-                    className="flex items-center gap-2 text-sm bg-green-50 text-green-800 rounded-lg px-3 py-2"
+                    className="flex items-center gap-2 text-sm bg-green-500/10 text-green-700 dark:text-green-400 rounded-lg px-3 py-2"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
                     {s}
@@ -61,7 +61,7 @@ export function StrengthsPanel({ result }: Props) {
                 {result.areasToGrow.map((a) => (
                   <li
                     key={a}
-                    className="flex items-center gap-2 text-sm bg-amber-50 text-amber-800 rounded-lg px-3 py-2"
+                    className="flex items-center gap-2 text-sm bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-lg px-3 py-2"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
                     {a}

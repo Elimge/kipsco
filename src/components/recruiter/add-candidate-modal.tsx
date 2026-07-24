@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { X, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,6 +15,17 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   function handleSubmit() {
     setError("");
@@ -69,7 +80,7 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-50"
+            className="fixed inset-0 bg-black/40 backdrop-blur-md z-50"
             onClick={handleClose}
           />
 
@@ -81,7 +92,7 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-50 flex items-center justify-center px-4"
           >
-            <div className="bg-background rounded-2xl border border-border shadow-xl w-full max-w-md p-6">
+            <div className="bg-background text-foreground rounded-2xl border border-border shadow-[0_25px_60px_rgba(0,0,0,0.3)] w-full max-w-md p-6">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-bold">Agregar candidato</h2>

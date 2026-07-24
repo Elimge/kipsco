@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Candidate } from "@/types/assessment";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -50,6 +51,14 @@ const BAR_COLORS = [
 ];
 
 export function CandidateComparison({ candidates, onClose }: Props) {
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   function getScore(candidate: Candidate, dimension: string): number {
     return (
       candidate.result.dimensions.find((d) => d.dimension === dimension)
@@ -66,13 +75,13 @@ export function CandidateComparison({ candidates, onClose }: Props) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 z-50 flex items-start justify-center overflow-y-auto py-8 px-4"
+      className="fixed inset-0 bg-black/40 backdrop-blur-md z-50 flex items-start justify-center overflow-y-auto py-8 px-4"
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-background rounded-2xl border border-border shadow-xl w-full max-w-4xl"
+        className="bg-background text-foreground rounded-2xl border border-border shadow-[0_25px_60px_rgba(0,0,0,0.3)] w-full max-w-4xl"
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border">

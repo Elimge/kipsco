@@ -47,7 +47,7 @@ export default function ResultsPage() {
   return (
     <main className="min-h-screen bg-muted/20">
       {/* Top nav */}
-      <div className="bg-background border-b border-border sticky top-0 z-50">
+      <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link
             href="/tests"

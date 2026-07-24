@@ -36,7 +36,7 @@ export function QuestionCard({
         className="flex flex-col gap-6"
       >
         {/* Question text */}
-        <div className="bg-card rounded-2xl border border-border p-6">
+        <div className="bg-card rounded-2xl border border-border p-6 shadow-sm">
           <p className="text-lg font-medium leading-relaxed">{question.text}</p>
         </div>
 
