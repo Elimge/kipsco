@@ -87,7 +87,7 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © 2026 Kipsco. Open source bajo licencia MIT.
+            © 2026 Kipsco. Open source bajo licencia Apache 2.0.
           </p>
           <a
             href="mailto:elimge@outlook.com"

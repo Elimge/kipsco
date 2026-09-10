@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kipsco — Plataforma de Evaluación de Talento
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8)
+![License](https://img.shields.io/badge/License-Apache%202.0-green)
+![Deploy](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-orange)
 
-First, run the development server:
+Plataforma moderna de evaluación psicométrica y psicotécnica orientada al mercado laboral colombiano. Open source, 100% frontend, sin backend requerido.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+🌐 **[kipsco.com](https://kipsco.com)**
+
+---
+
+## ¿Qué es Kipsco?
+
+Kipsco permite a reclutadores, equipos de RRHH y candidatos realizar evaluaciones de talento completas directamente desde el navegador, sin registros ni servidores externos.
+
+### Funcionalidades
+
+- **Test de Personalidad Laboral** — Big Five adaptado al contexto profesional colombiano
+- **Test de Aptitud Cognitiva** — Razonamiento lógico, numérico, verbal y atención al detalle
+- **Dashboard de resultados** — Gráficos radar, barras de progreso y compatibilidad con perfiles laborales
+- **Perfil compartible** — URL única con resultados codificados, sin backend
+- **Exportación PDF** — Reporte profesional descargable
+- **Recruiter Mode** — Panel para comparar candidatos lado a lado
+- **Modo oscuro** — Tema claro/oscuro/sistema
+- **SEO optimizado** — SSG, schema.org, sitemap, OpenGraph
+
+---
+
+## Stack técnico
+
+```
+Frontend:     Next.js 15 (App Router, Static Export)
+Lenguaje:     TypeScript 5
+Estilos:      Tailwind CSS v4
+Componentes:  shadcn/ui (Nova preset, Radix)
+Animaciones:  Framer Motion
+Gráficos:     Recharts
+PDF:          jsPDF + html2canvas
+Temas:        next-themes
+Package mgr:  pnpm
+Deploy:       Cloudflare Pages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Arquitectura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+ ├── app/                  # Rutas Next.js (App Router)
+ │    ├── page.tsx         # Landing page
+ │    ├── tests/           # Lista de tests y flujo
+ │    ├── results/         # Dashboard de resultados
+ │    ├── profile/         # Perfil profesional compartible
+ │    └── recruiter/       # Panel de reclutadores
+ ├── components/           # Componentes globales (navbar, footer, etc.)
+ │    └── results/         # Componentes del dashboard
+ │    └── recruiter/       # Componentes del recruiter mode
+ ├── data/                 # Datasets de preguntas por test
+ ├── features/             # Módulos por dominio (futuro)
+ ├── hooks/                # Custom hooks (useAssessment, useCandidates)
+ ├── lib/                  # Utilidades core (scoring, utils)
+ ├── services/             # Servicios (pdf-export)
+ ├── types/                # Tipos TypeScript globales
+ └── utils/                # Utilidades (share, encode)
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Cómo funciona el scoring
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+El motor de evaluación es 100% frontend. Cada respuesta suma puntos a dimensiones específicas. Al finalizar el test:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Se calcula el porcentaje por dimensión
+2. Se identifican fortalezas (≥70%) y áreas de mejora (<50%)
+3. Se calcula compatibilidad con perfiles laborales colombianos usando distancia ponderada
+4. Los resultados se codifican en base64 para la URL compartible
 
-## Deploy on Vercel
+No se envía ningún dato a servidores externos.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Cómo correr el proyecto localmente
+
+### Prerrequisitos
+
+- Node.js 20+
+- pnpm
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/elimge/kipsco.git
+cd kipsco
+
+# Instalar dependencias
+pnpm install
+
+# Correr en desarrollo
+pnpm run dev
+
+# Build de producción
+pnpm build
+```
+
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+---
+
+## Cómo agregar un nuevo test
+
+1. Crea el dataset en `src/data/tu-test.ts` siguiendo la estructura de `personality-test.ts`
+2. Agrega los perfiles de compatibilidad en `src/lib/scoring.ts`
+3. Registra el test en `src/app/tests/[slug]/test-page-client.tsx`
+4. Agrega el slug a `generateStaticParams` en `src/app/tests/[slug]/page.tsx`
+5. Activa el test en `src/app/tests/page.tsx`
+
+---
+
+## Cómo construir tu propio backend
+
+Kipsco está diseñado para ser agnóstico al backend. Para añadir persistencia:
+
+1. Reemplaza `localStorage` en `src/hooks/useAssessment.ts` con llamadas a tu API
+2. Reemplaza la codificación base64 en `src/utils/share.ts` con IDs de base de datos
+3. El motor de scoring en `src/lib/scoring.ts` puede migrarse a cualquier backend
+
+Endpoints mínimos sugeridos:
+```
+POST /api/results          # Guardar resultado
+GET  /api/results/:id      # Obtener resultado por ID
+POST /api/candidates       # Guardar candidato (recruiter mode)
+GET  /api/candidates       # Listar candidatos
+```
+
+---
+
+## Implementación empresarial
+
+¿Tu empresa necesita una versión personalizada de Kipsco con:
+- Autenticación y gestión de usuarios
+- Panel administrativo multiempresa
+- Tests personalizados para tu industria
+- Integración con tu ATS
+- Backend propio (Django, FastAPI, Node.js)
+
+Contáctame: **elimge@outlook.com**
+
+---
+
+## Créditos y licencia
+
+Desarrollado por **Miguel Canedo Vanegas** — [GitHub](https://github.com/elimge)
+
+Licencia Apache 2.0 — libre para uso personal y comercial con atribución.
+Ver [LICENSE](./LICENSE) para más detalles.
