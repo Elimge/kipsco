@@ -28,6 +28,12 @@ export function Navbar() {
             <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Cómo funciona
             </a>
+            <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Sobre
+            </a>
+            <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Contacto
+            </a>
             <Link href="/tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Tests
             </Link>
@@ -40,7 +46,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <Link href="/tests">
-              <Button size="sm">Comenzar gratis</Button>
+              <Button size="sm" className="cursor-pointer">Comenzar gratis</Button>
             </Link>
           </div>
 
@@ -61,6 +67,8 @@ export function Navbar() {
           <div className="md:hidden py-4 flex flex-col gap-4 border-t border-border">
             <a href="#features" className="text-sm text-muted-foreground">Características</a>
             <a href="#how-it-works" className="text-sm text-muted-foreground">Cómo funciona</a>
+            <a href="#about" className="text-sm text-muted-foreground">Sobre</a>
+            <a href="#contact" className="text-sm text-muted-foreground">Contacto</a>
             <Link href="/tests" className="text-sm text-muted-foreground">Tests</Link>
             <Link href="/recruiter" className="text-sm text-muted-foreground">Reclutadores</Link>
             <Link href="/tests">

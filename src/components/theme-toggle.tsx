@@ -24,7 +24,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="sm"
       onClick={cycleTheme}
-      className="w-8 h-8 p-0"
+      className="w-8 h-8 p-0 cursor-pointer"
       title="Cambiar tema"
     >
       {theme === "light" && <Sun size={16} />}
