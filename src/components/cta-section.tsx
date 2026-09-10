@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Building2 } from "lucide-react";
+import Link from "next/link";
 
 export function CTASection() {
   return (
@@ -23,22 +24,22 @@ export function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="gap-2"
-            >
-              Comenzar evaluación gratis
-              <ArrowRight size={16} />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="gap-2 bg-transparent border-white/30 text-white hover:bg-white/10"
-            >
-              <Building2 size={16} />
-              Demo para empresas
-            </Button>
+            <Link href="/tests">
+              <Button size="lg" variant="secondary" className="gap-2 cursor-pointer">
+                Comenzar evaluación gratis
+                <ArrowRight size={16} />
+              </Button>
+            </Link>
+            <Link href="/recruiter">
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2 cursor-pointer bg-transparent border-white/30 text-white hover:bg-white/10"
+              >
+                <Building2 size={16} />
+                Modo reclutador
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import Link from "next/link";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,10 +15,10 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <span className="text-xl font-bold tracking-tight">Kipsco</span>
             <Badge variant="secondary" className="text-xs">Beta</Badge>
-          </div>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
@@ -31,42 +31,41 @@ export function Navbar() {
             <Link href="/tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Tests
             </Link>
+            <Link href="/recruiter" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Reclutadores
+            </Link>
           </div>
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            <Button variant="ghost" size="sm">Iniciar sesión</Button>
-            <Button size="sm">Comenzar gratis</Button>
+            <Link href="/tests">
+              <Button size="sm">Comenzar gratis</Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 cursor-pointer"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden py-4 flex flex-col gap-4 border-t border-border">
-            <Link href="#features" className="text-sm text-muted-foreground">
-              Características
+            <a href="#features" className="text-sm text-muted-foreground">Características</a>
+            <a href="#how-it-works" className="text-sm text-muted-foreground">Cómo funciona</a>
+            <Link href="/tests" className="text-sm text-muted-foreground">Tests</Link>
+            <Link href="/recruiter" className="text-sm text-muted-foreground">Reclutadores</Link>
+            <Link href="/tests">
+              <Button size="sm" className="w-full">Comenzar gratis</Button>
             </Link>
-            <Link href="#how-it-works" className="text-sm text-muted-foreground">
-              Cómo funciona
-            </Link>
-            <Link href="/tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Tests
-            </Link>
-            <Link href="/recruiter" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Reclutadores
-            </Link>
-            <Button size="sm" className="w-full">
-              Comenzar gratis
-            </Button>
           </div>
         )}
       </div>

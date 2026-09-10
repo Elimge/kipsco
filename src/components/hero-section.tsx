@@ -29,9 +29,8 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          Descubre el talento{" "}
-          <span className="text-primary">real</span>{" "}
-          de tu equipo
+          Descubre el talento <span className="text-primary">real</span> de tu
+          equipo
         </motion.h1>
 
         <motion.p
@@ -41,7 +40,8 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           Evaluaciones psicométricas y cognitivas diseñadas para reclutadores,
-          equipos de RRHH y organizaciones que toman decisiones basadas en datos.
+          equipos de RRHH y organizaciones que toman decisiones basadas en
+          datos.
         </motion.p>
 
         <motion.div
@@ -50,15 +50,18 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-        <Link href="/tests">
-          <Button size="lg" className="gap-2 cursor-pointer">
-            Comenzar evaluación gratis
-            <ArrowRight size={16} />
-          </Button>
-        </Link>
-        <Button size="lg" variant="outline" className="cursor-pointer">
-          Ver demo empresarial
-        </Button>
+          <Link href="/tests">
+            <Button size="lg" className="gap-2 cursor-pointer">
+              Comenzar evaluación gratis
+              <ArrowRight size={16} />
+            </Button>
+          </Link>
+          <Link href="/recruiter">
+            <Button size="lg" variant="outline" className="gap-2 cursor-pointer bg-transparent border-white/30 text-white hover:bg-white/10">
+              <Users size={16} />
+              Modo reclutador
+            </Button>
+          </Link>
         </motion.div>
 
         {/* Stats */}

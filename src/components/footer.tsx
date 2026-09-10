@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -12,36 +13,72 @@ export function Footer() {
               <span className="text-lg font-bold">Kipsco</span>
               <Badge variant="secondary" className="text-xs">Beta</Badge>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-4">
               Plataforma moderna de evaluación psicométrica y de talento
               para reclutadores y equipos de RRHH.
             </p>
+            <a
+              href="mailto:elimge@outlook.com"
+              className="text-sm font-medium hover:text-muted-foreground transition-colors"
+            >
+              elimge@outlook.com
+            </a>
           </div>
 
-          {/* Links */}
+          {/* Producto */}
           <div>
             <h4 className="font-semibold text-sm mb-3">Producto</h4>
             <ul className="flex flex-col gap-2">
-              {["Características", "Tests disponibles", "Cómo funciona", "Demo empresarial"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link href="/tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Tests disponibles
+                </Link>
+              </li>
+              <li>
+                <Link href="/recruiter" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Modo reclutador
+                </Link>
+              </li>
+              <li>
+                <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Características
+                </a>
+              </li>
+              <li>
+                <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Cómo funciona
+                </a>
+              </li>
             </ul>
           </div>
 
+          {/* Proyecto */}
           <div>
-            <h4 className="font-semibold text-sm mb-3">Empresa</h4>
+            <h4 className="font-semibold text-sm mb-3">Proyecto</h4>
             <ul className="flex flex-col gap-2">
-              {["Acerca de", "Contacto", "Privacidad", "Términos"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="https://github.com/elimge/kipsco"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:elimge@outlook.com"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Contacto
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  FAQ
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -50,11 +87,14 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © 2026 Kipsco. Todos los derechos reservados.
+            © 2026 Kipsco. Open source bajo licencia MIT.
           </p>
-          <p className="text-xs text-muted-foreground">
-            Hecho con Next.js, TypeScript y shadcn/ui
-          </p>
+          <a
+            href="mailto:elimge@outlook.com"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            elimge@outlook.com
+          </a>
         </div>
       </div>
     </footer>
