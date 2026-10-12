@@ -11,12 +11,14 @@ import {
   Radar,
   ResponsiveContainer,
 } from "recharts";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   result: AssessmentResult;
 }
 
 export function DimensionsChart({ result }: Props) {
+  const { t } = useTranslation();
   const radarData = result.dimensions.map((d) => ({
     dimension: d.label,
     value: d.percentage,
@@ -30,7 +32,7 @@ export function DimensionsChart({ result }: Props) {
     >
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Dimensiones de personalidad</CardTitle>
+          <CardTitle className="text-lg">{t("results.dimensions")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -44,7 +46,7 @@ export function DimensionsChart({ result }: Props) {
                     tick={{ fontSize: 11, fill: "#6b7280" }}
                   />
                   <Radar
-                    name="Perfil"
+                    name={t("results.generalProfile")}
                     dataKey="value"
                     stroke="#18181b"
                     fill="#18181b"

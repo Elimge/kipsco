@@ -19,9 +19,11 @@ import Link from "next/link";
 import { AddCandidateModal } from "@/components/recruiter/add-candidate-modal";
 import { CandidateComparison } from "@/components/recruiter/candidate-comparison";
 import { Candidate } from "@/types/assessment";
+import { useTranslation } from "react-i18next";
 
 export default function RecruiterPage() {
   const { candidates, addCandidate, removeCandidate, clearAll } = useCandidates();
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [selectedCandidates, setSelectedCandidates] = useState<string[]>([]);
   const [showComparison, setShowComparison] = useState(false);
@@ -46,19 +48,19 @@ export default function RecruiterPage() {
             className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft size={16} />
-            Inicio
+            {t("recruiter.back")}
           </Link>
           <div className="flex items-center gap-2">
             <Users size={16} className="text-muted-foreground" />
-            <span className="text-sm font-medium">Recruiter Mode</span>
-            <Badge variant="secondary" className="text-xs">Beta</Badge>
+            <span className="text-sm font-medium">{t("recruiter.title")}</span>
+            <Badge variant="secondary" className="text-xs">{t("recruiter.beta")}</Badge>
           </div>
           <Button size="sm" className="gap-2" onClick={() => setShowModal(true)}>
             <Plus size={14} />
-            Agregar candidato
+            {t("recruiter.addCandidate")}
           </Button>
           <p className="text-xs text-muted-foreground max-w-xs text-center mt-3">
-            Pide al candidato que complete un test en Kipsco y comparta su URL de perfil contigo.
+            {t("recruiter.emptyHint")}
           </p>
         </div>
       </div>
@@ -72,10 +74,10 @@ export default function RecruiterPage() {
           transition={{ duration: 0.4 }}
         >
           <h1 className="text-2xl font-bold tracking-tight mb-1">
-            Panel de candidatos
+            {t("recruiter.title")}
           </h1>
           <p className="text-muted-foreground text-sm">
-            Agrega candidatos pegando su URL de perfil Kipsco. Compáralos lado a lado.
+            {t("recruiter.subtitle")}
           </p>
         </motion.div>
 
@@ -89,17 +91,17 @@ export default function RecruiterPage() {
           >
             {[
               {
-                label: "Candidatos",
+                label: t("recruiter.candidates"),
                 value: candidates.length,
                 icon: Users,
               },
               {
-                label: "Seleccionados",
+                label: t("recruiter.selected"),
                 value: selectedCandidates.length,
                 icon: BarChart3,
               },
               {
-                label: "Mejor perfil",
+                label: t("recruiter.bestProfile"),
                 value: candidates.reduce((best, c) => {
                   const top = c.result.roleCompatibility[0]?.percentage ?? 0;
                   return top > best ? top : best;
@@ -131,7 +133,7 @@ export default function RecruiterPage() {
             className="bg-primary text-primary-foreground rounded-xl px-5 py-3 flex items-center justify-between"
           >
             <p className="text-sm font-medium">
-              {selectedCandidates.length} candidatos seleccionados
+              {selectedCandidates.length} {t("recruiter.selectedCount")}
             </p>
             <Button
               size="sm"
@@ -140,7 +142,7 @@ export default function RecruiterPage() {
               onClick={() => setShowComparison(true)}
             >
               <BarChart3 size={14} />
-              Comparar
+              {t("recruiter.compare")}
             </Button>
           </motion.div>
         )}
@@ -156,14 +158,14 @@ export default function RecruiterPage() {
               <UserX size={28} className="text-muted-foreground" />
             </div>
             <div className="text-center">
-              <p className="font-medium mb-1">Sin candidatos aún</p>
+              <p className="font-medium mb-1">{t("recruiter.emptyTitle")}</p>
               <p className="text-sm text-muted-foreground max-w-xs">
-                Agrega candidatos pegando la URL de su perfil Kipsco.
+                {t("recruiter.emptyDesc")}
               </p>
             </div>
             <Button className="gap-2 mt-2" onClick={() => setShowModal(true)}>
               <Plus size={16} />
-              Agregar primer candidato
+              {t("recruiter.emptyCta")}
             </Button>
           </motion.div>
         ) : (
@@ -190,7 +192,7 @@ export default function RecruiterPage() {
                   onClick={clearAll}
                 >
                   <Trash2 size={14} />
-                  Limpiar todos
+                  {t("recruiter.clearAll")}
                 </Button>
               </div>
             )}
@@ -229,6 +231,7 @@ function CandidateCard({
   onToggle: () => void;
   onRemove: () => void;
 }) {
+  const { t } = useTranslation();
   const topRole = candidate.result.roleCompatibility[0];
   const topDim = candidate.result.dimensions[0];
   const date = new Date(candidate.addedAt).toLocaleDateString("es-CO", {
@@ -282,7 +285,7 @@ function CandidateCard({
 
           {topDim && (
             <p className="text-xs text-muted-foreground mb-3">
-              Alta {topDim.label} ({topDim.percentage}%)
+              {t("recruiter.high", { dimension: topDim.label })} ({topDim.percentage}%)
             </p>
           )}
 
@@ -306,7 +309,7 @@ function CandidateCard({
         <div className="flex flex-col items-end gap-3 shrink-0">
           {topRole && (
             <div className="text-right">
-              <p className="text-xs text-muted-foreground">Mejor rol</p>
+              <p className="text-xs text-muted-foreground">{t("recruiter.bestRole")}</p>
               <p className="text-xs font-semibold">{topRole.role}</p>
               <p
                 className={`text-sm font-bold ${

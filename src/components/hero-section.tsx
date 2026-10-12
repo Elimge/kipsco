@@ -5,8 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BarChart3, Brain, Users } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export function HeroSection() {
+  const { t } = useTranslation();
+
+  const stats = [
+    { icon: Brain, label: t("hero.stats.tests"), value: "2+" },
+    { icon: BarChart3, label: t("hero.stats.dimensions"), value: "12+" },
+    { icon: Users, label: t("hero.stats.profiles"), value: "20+" },
+  ];
+
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -19,7 +28,7 @@ export function HeroSection() {
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-pink-100">
               <Brain className="h-3.5 w-3.5 text-pink-600" />
             </span>
-            Evaluación psicométrica moderna
+            {t("hero.badge")}
           </Badge>
         </motion.div>
 
@@ -29,8 +38,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          Descubre el talento <span className="text-primary">real</span> de tu
-          equipo
+          {t("hero.title")}
         </motion.h1>
 
         <motion.p
@@ -39,9 +47,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Evaluaciones psicométricas y cognitivas diseñadas para reclutadores,
-          equipos de RRHH y organizaciones que toman decisiones basadas en
-          datos.
+          {t("hero.description")}
         </motion.p>
 
         <motion.div
@@ -52,14 +58,14 @@ export function HeroSection() {
         >
           <Link href="/tests">
             <Button size="lg" className="gap-2 cursor-pointer">
-              Comenzar evaluación gratis
+              {t("hero.startCta")}
               <ArrowRight size={16} />
             </Button>
           </Link>
           <Link href="/recruiter">
             <Button size="lg" variant="outline" className="gap-2 cursor-pointer bg-transparent border-white/30 text-white hover:bg-white/10">
               <Users size={16} />
-              Modo reclutador
+              {t("hero.recruiterCta")}
             </Button>
           </Link>
         </motion.div>
@@ -71,11 +77,7 @@ export function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          {[
-            { icon: Brain, label: "Tests validados", value: "2+" },
-            { icon: BarChart3, label: "Dimensiones", value: "12+" },
-            { icon: Users, label: "Perfiles laborales", value: "20+" },
-          ].map(({ icon: Icon, label, value }) => (
+          {stats.map(({ icon: Icon, label, value }) => (
             <div key={label} className="flex flex-col items-center gap-1">
               <Icon size={20} className="text-muted-foreground" />
               <span className="text-2xl font-bold">{value}</span>

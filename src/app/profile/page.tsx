@@ -20,9 +20,11 @@ import {
 import Link from "next/link";
 import { exportResultsToPDF } from "@/services/pdf-export";
 import { PDFReport } from "@/components/results/pdf-report";
+import { useTranslation } from "react-i18next";
 
 export default function ProfilePage() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
@@ -64,7 +66,7 @@ export default function ProfilePage() {
   if (!result) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <p className="text-muted-foreground">Cargando perfil...</p>
+        <p className="text-muted-foreground">{t("profile.loading")}</p>
       </main>
     );
   }
@@ -88,9 +90,9 @@ export default function ProfilePage() {
             className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft size={16} />
-            Volver a resultados
+            {t("profile.backToResults")}
           </Link>
-          <span className="text-sm font-medium">Perfil Profesional</span>
+          <span className="text-sm font-medium">{t("profile.title")}</span>
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
@@ -101,12 +103,12 @@ export default function ProfilePage() {
               {copied ? (
                 <>
                   <Check size={14} className="text-green-600" />
-                  ¡Copiado!
+                  {t("profile.copied")}
                 </>
               ) : (
                 <>
                   <Share2 size={14} />
-                  Compartir
+                  {t("profile.share")}
                 </>
               )}
             </Button>
@@ -117,7 +119,7 @@ export default function ProfilePage() {
               disabled={isExporting}
             >
               <Download size={14} />
-              {isExporting ? "Generando..." : "PDF"}
+              {isExporting ? t("profile.generating") : t("profile.pdf")}
             </Button>
           </div>
         </div>
@@ -135,9 +137,13 @@ export default function ProfilePage() {
           <div className="flex items-start justify-between gap-4 mb-6">
             <div>
               <p className="text-zinc-400 text-sm mb-1">Perfil Psicométrico Laboral</p>
+              <p className="text-zinc-400 text-sm mb-1">{t("profile.psychometricProfile")}</p>
               <h1 className="text-2xl font-bold mb-2">
-                Alta {topDimension?.label ?? "Personalidad"}
+                {t("profile.high", {
+                  dimension: topDimension?.label ?? t("profile.personality"),
+                })}
               </h1>
+              <p className="text-zinc-500 text-xs">{t("profile.evaluatedOn")}</p>
               <p className="text-zinc-300 text-sm max-w-md">
                 {result.overallProfile}
               </p>
@@ -160,7 +166,7 @@ export default function ProfilePage() {
             ))}
             {result.topStrengths.length === 0 && (
               <Badge className="bg-white/10 text-white border-white/20">
-                Perfil equilibrado
+                {t("profile.balanced")}
               </Badge>
             )}
           </div>

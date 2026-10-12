@@ -4,12 +4,15 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { AssessmentResult } from "@/types/assessment";
 import { Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   result: AssessmentResult;
 }
 
 export function OverallProfile({ result }: Props) {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -23,7 +26,7 @@ export function OverallProfile({ result }: Props) {
           </div>
           <div>
             <p className="text-xs text-white/60 mb-1 uppercase tracking-wider">
-              Perfil general
+              {t("results.generalProfile")}
             </p>
             <p className="text-base font-medium leading-relaxed">
               {result.overallProfile}

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Question } from "@/types/assessment";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface QuestionCardProps {
   question: Question;
@@ -25,6 +26,7 @@ export function QuestionCard({
   isFirst,
   isLast,
 }: QuestionCardProps) {
+  const { t } = useTranslation();
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -73,14 +75,14 @@ export function QuestionCard({
             className="gap-2"
           >
             <ArrowLeft size={16} />
-            Anterior
+            {t("testFlow.prev")}
           </Button>
           <Button
             onClick={onNext}
             disabled={!selectedOptionId}
             className="gap-2"
           >
-            {isLast ? "Ver resultados" : "Siguiente"}
+            {isLast ? t("testFlow.finish") : t("testFlow.next")}
             <ArrowRight size={16} />
           </Button>
         </div>

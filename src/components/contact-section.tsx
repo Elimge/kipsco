@@ -1,37 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Mail, MessageSquare, Building2 } from "lucide-react";
 
-const contactOptions = [
-  {
-    icon: Building2,
-    title: "Implementación empresarial",
-    description:
-      "¿Tu empresa necesita una plataforma de evaluación de talento personalizada? Puedo construirla.",
-    cta: "Escribir al developer",
-    href: "mailto:elimge@outlook.com?subject=Implementación empresarial Kipsco",
-  },
-  {
-    icon: MessageSquare,
-    title: "Freelance / Consultoría",
-    description:
-      "¿Tienes un proyecto de software o data engineering? Hablemos sobre cómo puedo ayudarte.",
-    cta: "Contactar",
-    href: "mailto:elimge@outlook.com?subject=Consultoría freelance",
-  },
-  {
-    icon: Mail,
-    title: "Otras consultas",
-    description:
-      "Sugerencias, bugs, colaboraciones open source o cualquier otra consulta sobre Kipsco.",
-    cta: "Enviar mensaje",
-    href: "mailto:elimge@outlook.com?subject=Consulta Kipsco",
-  },
-];
-
 export function ContactSection() {
+  const { t } = useTranslation();
+  const contactOptions = [
+    {
+      icon: Building2,
+      title: t("contact.enterpriseTitle"),
+      description: t("contact.enterpriseDesc"),
+      cta: t("contact.enterpriseCta"),
+      href: "mailto:elimge@outlook.com?subject=Implementación empresarial Kipsco",
+    },
+    {
+      icon: MessageSquare,
+      title: t("contact.freelanceTitle"),
+      description: t("contact.freelanceDesc"),
+      cta: t("contact.freelanceCta"),
+      href: "mailto:elimge@outlook.com?subject=Consultoría freelance",
+    },
+    {
+      icon: Mail,
+      title: t("contact.otherTitle"),
+      description: t("contact.otherDesc"),
+      cta: t("contact.otherCta"),
+      href: "mailto:elimge@outlook.com?subject=Consulta Kipsco",
+    },
+  ];
+
   return (
     <section id="contact" className="py-24 px-4 bg-muted/30">
       <div className="max-w-5xl mx-auto">
@@ -42,13 +41,8 @@ export function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight mb-4">
-            ¿Hablamos?
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Ya sea para implementar Kipsco en tu empresa, contratar al developer
-            o simplemente preguntar algo, estoy disponible.
-          </p>
+          <h2 className="text-3xl font-bold tracking-tight mb-4">{t("contact.title")}</h2>
+          <p className="text-muted-foreground">{t("contact.subtitle")}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -89,7 +83,7 @@ export function ContactSection() {
           className="text-center mt-10"
         >
           <p className="text-sm text-muted-foreground">
-            O escríbeme directamente a{" "}
+            {t("contact.directEmail")} {" "}
             <a
               href="mailto:elimge@outlook.com"
               className="font-semibold text-foreground hover:underline"

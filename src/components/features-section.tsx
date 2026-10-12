@@ -3,47 +3,19 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Brain, BarChart3, FileText, Users, Zap, Shield } from "lucide-react";
-
-const features = [
-  {
-    icon: Brain,
-    title: "Tests Psicométricos",
-    description:
-      "Evalúa personalidad laboral, estilo de trabajo y compatibilidad de equipo con modelos basados en Big Five y DISC.",
-  },
-  {
-    icon: Zap,
-    title: "Aptitud Cognitiva",
-    description:
-      "Mide razonamiento lógico, numérico y verbal con ejercicios diseñados para entornos profesionales reales.",
-  },
-  {
-    icon: BarChart3,
-    title: "Dashboard Visual",
-    description:
-      "Resultados claros con gráficos de radar, barras de progreso y matrices de fortalezas listas para compartir.",
-  },
-  {
-    icon: FileText,
-    title: "Exportación PDF",
-    description:
-      "Genera reportes profesionales en PDF para compartir con reclutadores, managers o guardar en tu portfolio.",
-  },
-  {
-    icon: Users,
-    title: "Perfiles Laborales",
-    description:
-      "Compatibilidad automática con más de 20 perfiles profesionales: Developer, PM, Designer, Líder y más.",
-  },
-  {
-    icon: Shield,
-    title: "100% Privado",
-    description:
-      "Todo el procesamiento ocurre en tu navegador. Ningún dato personal se envía a servidores externos.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function FeaturesSection() {
+  const { t } = useTranslation();
+  const features = [
+    { icon: Brain, title: t("features.psychometric.title"), description: t("features.psychometric.description") },
+    { icon: Zap, title: t("features.cognitive.title"), description: t("features.cognitive.description") },
+    { icon: BarChart3, title: t("features.dashboard.title"), description: t("features.dashboard.description") },
+    { icon: FileText, title: t("features.pdf.title"), description: t("features.pdf.description") },
+    { icon: Users, title: t("features.profiles.title"), description: t("features.profiles.description") },
+    { icon: Shield, title: t("features.privacy.title"), description: t("features.privacy.description") },
+  ];
+
   return (
     <section id="features" className="py-24 px-4 bg-muted/30">
       <div className="max-w-6xl mx-auto">
@@ -55,11 +27,10 @@ export function FeaturesSection() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Todo lo que necesitas para evaluar talento
+            {t("features.title")}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Una plataforma completa que combina ciencia del comportamiento
-            con experiencia de usuario moderna.
+            {t("features.subtitle")}
           </p>
         </motion.div>
 

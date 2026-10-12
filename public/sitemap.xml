@@ -19,6 +19,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://kipsco.com/tests/test-aptitud-cognitiva/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://kipsco.com/results/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -26,6 +32,12 @@
   </url>
   <url>
     <loc>https://kipsco.com/profile/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kipsco.com/recruiter/</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

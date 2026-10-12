@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { AssessmentResult } from "@/types/assessment";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   result: AssessmentResult;
 }
 
 export function RoleCompatibilityPanel({ result }: Props) {
+  const { t } = useTranslation();
   const top = result.roleCompatibility.slice(0, 6);
 
   return (
@@ -20,7 +22,7 @@ export function RoleCompatibilityPanel({ result }: Props) {
     >
       <Card className="h-full">
         <CardHeader>
-          <CardTitle className="text-lg">Compatibilidad con perfiles laborales</CardTitle>
+          <CardTitle className="text-lg">{t("results.compatibility")}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           {top.map((role, index) => (

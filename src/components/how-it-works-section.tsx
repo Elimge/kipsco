@@ -3,32 +3,16 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { ClipboardList, BarChart3, Download } from "lucide-react";
-
-const steps = [
-  {
-    number: "01",
-    icon: ClipboardList,
-    title: "Elige tu evaluación",
-    description:
-      "Selecciona entre tests de personalidad, aptitud cognitiva o perfil profesional según tu objetivo.",
-  },
-  {
-    number: "02",
-    icon: BarChart3,
-    title: "Responde y obtén resultados",
-    description:
-      "Completa la evaluación a tu ritmo. El análisis ocurre automáticamente en tiempo real.",
-  },
-  {
-    number: "03",
-    icon: Download,
-    title: "Descarga tu reporte",
-    description:
-      "Obtén un PDF profesional con tus dimensiones, fortalezas y compatibilidad con perfiles laborales.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function HowItWorksSection() {
+  const { t } = useTranslation();
+  const steps = [
+    { number: "01", icon: ClipboardList, title: t("howItWorks.step1.title"), description: t("howItWorks.step1.description") },
+    { number: "02", icon: BarChart3, title: t("howItWorks.step2.title"), description: t("howItWorks.step2.description") },
+    { number: "03", icon: Download, title: t("howItWorks.step3.title"), description: t("howItWorks.step3.description") },
+  ];
+
   return (
     <section id="how-it-works" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
@@ -39,13 +23,14 @@ export function HowItWorksSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <Badge variant="secondary" className="mb-4">Proceso simple</Badge>
+          <Badge variant="secondary" className="mb-4">
+            {t("howItWorks.badge")}
+          </Badge>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Tres pasos para conocer tu perfil
+            {t("howItWorks.title")}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Sin registros obligatorios. Sin configuración compleja.
-            Resultados en minutos.
+            {t("howItWorks.subtitle")}
           </p>
         </motion.div>
 

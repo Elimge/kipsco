@@ -1,6 +1,9 @@
+"use client";
+
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface ProgressHeaderProps {
   title: string;
@@ -17,6 +20,7 @@ export function ProgressHeader({
   progress,
   answeredCount,
 }: ProgressHeaderProps) {
+  const { t } = useTranslation();
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-2xl mx-auto px-4 py-3">
@@ -24,12 +28,12 @@ export function ProgressHeader({
           <div>
             <p className="text-xs text-muted-foreground">{title}</p>
             <p className="text-sm font-medium">
-              Pregunta {currentIndex + 1} de {total}
+              {t("testFlow.question")} {currentIndex + 1} {t("testFlow.of")} {total}
             </p>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-xs text-muted-foreground">
-              {answeredCount}/{total} respondidas
+              {answeredCount}/{total} {t("testFlow.answered")}
             </span>
             <Link
               href="/tests"

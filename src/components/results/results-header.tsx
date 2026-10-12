@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { AssessmentResult } from "@/types/assessment";
 import { CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   result: AssessmentResult;
 }
 
 export function ResultsHeader({ result }: Props) {
-  const date = new Date(result.completedAt).toLocaleDateString("es-CO", {
+  const { t, i18n } = useTranslation();
+  const date = new Date(result.completedAt).toLocaleDateString(i18n.language, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -29,10 +31,10 @@ export function ResultsHeader({ result }: Props) {
         </div>
       </div>
       <h1 className="text-3xl font-bold tracking-tight mb-2">
-        Tu evaluación está lista
+        {t("results.title")}
       </h1>
       <p className="text-muted-foreground mb-4">
-        Completado el {date}
+        {t("results.completedOn")} {date}
       </p>
       <div className="flex justify-center gap-2 flex-wrap">
         {result.topStrengths.map((s) => (

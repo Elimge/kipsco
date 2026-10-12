@@ -1,8 +1,12 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="py-12 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
@@ -14,8 +18,7 @@ export function Footer() {
               <Badge variant="secondary" className="text-xs">Beta</Badge>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-4">
-              Plataforma moderna de evaluación psicométrica y de talento
-              para reclutadores y equipos de RRHH.
+              {t("footer.description")}
             </p>
             <a
               href="mailto:elimge@outlook.com"
@@ -27,26 +30,26 @@ export function Footer() {
 
           {/* Producto */}
           <div>
-            <h4 className="font-semibold text-sm mb-3">Producto</h4>
+            <h4 className="font-semibold text-sm mb-3">{t("footer.product")}</h4>
             <ul className="flex flex-col gap-2">
               <li>
                 <Link href="/tests" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Tests disponibles
+                  {t("footer.tests")}
                 </Link>
               </li>
               <li>
                 <Link href="/recruiter" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Modo reclutador
+                  {t("footer.recruiter")}
                 </Link>
               </li>
               <li>
                 <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Características
+                  {t("footer.features")}
                 </a>
               </li>
               <li>
                 <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Cómo funciona
+                  {t("footer.howItWorks")}
                 </a>
               </li>
             </ul>
@@ -54,7 +57,7 @@ export function Footer() {
 
           {/* Proyecto */}
           <div>
-            <h4 className="font-semibold text-sm mb-3">Proyecto</h4>
+            <h4 className="font-semibold text-sm mb-3">{t("footer.project")}</h4>
             <ul className="flex flex-col gap-2">
               <li>
                 <a
@@ -63,7 +66,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  GitHub
+                  {t("footer.github")}
                 </a>
               </li>
               <li>
@@ -71,12 +74,12 @@ export function Footer() {
                   href="mailto:elimge@outlook.com"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Contacto
+                  {t("footer.contact")}
                 </a>
               </li>
               <li>
                 <a href="#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  FAQ
+                  {t("footer.faq")}
                 </a>
               </li>
             </ul>
@@ -87,7 +90,7 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © 2026 Kipsco. Open source bajo licencia Apache 2.0.
+            {t("footer.copyright")}
           </p>
           <a
             href="mailto:elimge@outlook.com"

@@ -4,12 +4,15 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AssessmentResult } from "@/types/assessment";
 import { TrendingUp, TrendingDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   result: AssessmentResult;
 }
 
 export function StrengthsPanel({ result }: Props) {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -18,7 +21,7 @@ export function StrengthsPanel({ result }: Props) {
     >
       <Card className="h-full">
         <CardHeader>
-          <CardTitle className="text-lg">Fortalezas y áreas de mejora</CardTitle>
+          <CardTitle className="text-lg">{t("results.strengthsTitle")}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
           {/* Strengths */}
@@ -26,7 +29,7 @@ export function StrengthsPanel({ result }: Props) {
             <div className="flex items-center gap-2 mb-3">
               <TrendingUp size={16} className="text-green-600" />
               <span className="text-sm font-medium text-green-700">
-                Principales fortalezas
+                {t("results.topStrengths")}
               </span>
             </div>
             {result.topStrengths.length > 0 ? (
@@ -43,7 +46,7 @@ export function StrengthsPanel({ result }: Props) {
               </ul>
             ) : (
               <p className="text-sm text-muted-foreground">
-                Perfil equilibrado sin fortalezas destacadas.
+                {t("results.balanced")}
               </p>
             )}
           </div>
@@ -53,7 +56,7 @@ export function StrengthsPanel({ result }: Props) {
             <div className="flex items-center gap-2 mb-3">
               <TrendingDown size={16} className="text-amber-600" />
               <span className="text-sm font-medium text-amber-700">
-                Áreas de desarrollo
+                {t("results.areasToGrow")}
               </span>
             </div>
             {result.areasToGrow.length > 0 ? (
@@ -70,7 +73,7 @@ export function StrengthsPanel({ result }: Props) {
               </ul>
             ) : (
               <p className="text-sm text-muted-foreground">
-                Sin áreas críticas de mejora identificadas.
+                {t("results.noCritical")}
               </p>
             )}
           </div>

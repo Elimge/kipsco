@@ -15,8 +15,10 @@ import { PDFReport } from "@/components/results/pdf-report";
 import { exportResultsToPDF } from "@/services/pdf-export";
 import { Download } from "lucide-react";
 import { User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function ResultsPage() {
+  const { t } = useTranslation();
   const router = useRouter();
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [isExporting, setIsExporting] = useState(false);
@@ -39,7 +41,7 @@ export default function ResultsPage() {
   if (!result) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <p className="text-muted-foreground">Cargando resultados...</p>
+        <p className="text-muted-foreground">{t("results.loading")}</p>
       </main>
     );
   }
@@ -54,10 +56,10 @@ export default function ResultsPage() {
             className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft size={16} />
-            Volver a tests
+            {t("results.backToTests")}
           </Link>
           <span className="text-sm font-medium">
-            Resultados — Test de Personalidad Laboral
+            {t("results.pageTitle")}
           </span>
           <div className="flex items-center gap-2">
             <Button
@@ -70,12 +72,12 @@ export default function ResultsPage() {
               }}
             >
               <RotateCcw size={14} />
-              Repetir
+              {t("results.repeat")}
             </Button>
             <Link href="/profile">
               <Button variant="outline" size="sm" className="gap-2">
                 <User size={14} />
-                Ver perfil
+                {t("results.viewProfile")}
               </Button>
             </Link>
             <Button
@@ -85,7 +87,7 @@ export default function ResultsPage() {
               disabled={isExporting}
             >
               <Download size={14} />
-              {isExporting ? "Generando..." : "Descargar PDF"}
+              {isExporting ? t("results.generating") : t("results.downloadPdf")}
             </Button>
           </div>
         </div>

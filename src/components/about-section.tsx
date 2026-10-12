@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Code2, Database, ExternalLink } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export function AboutSection() {
+  const { t } = useTranslation();
+
   return (
     <section id="about" className="py-24 px-4">
       <div className="max-w-4xl mx-auto">
@@ -18,26 +21,22 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-4">Sobre el proyecto</Badge>
+            <Badge variant="secondary" className="mb-4">{t("about.badge")}</Badge>
             <h2 className="text-3xl font-bold tracking-tight mb-4">
-              Construido por un developer,<br />para el mercado real
+              {t("about.title")}
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Kipsco es un proyecto open source desarrollado como demostración
-              de capacidades Full Stack y Data Engineering aplicadas a un
-              producto real del mercado colombiano.
+              {t("about.description1")}
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Si tu empresa necesita una plataforma de evaluación de talento
-              personalizada, o si buscas un ingeniero con experiencia en
-              productos modernos, hablemos.
+              {t("about.description2")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <a href="mailto:elimge@outlook.com">
                 <Button className="gap-2 cursor-pointer w-full sm:w-auto">
                   <Mail size={16} />
-                  Contactar
+                  {t("about.contactBtn")}
                 </Button>
               </a>
               <a
@@ -47,7 +46,7 @@ export function AboutSection() {
               >
                 <Button variant="outline" className="gap-2 cursor-pointer w-full sm:w-auto">
                   <ExternalLink size={16} />
-                  Ver código
+                  {t("about.codeBtn")}
                 </Button>
               </a>
             </div>
@@ -64,15 +63,13 @@ export function AboutSection() {
             {[
               {
                 icon: Code2,
-                title: "Full Stack Developer",
-                description:
-                  "React, Next.js, TypeScript, Python, Django. Productos completos de principio a fin.",
+                title: t("about.fullstackTitle"),
+                description: t("about.fullstackDesc"),
               },
               {
                 icon: Database,
-                title: "Data Engineer",
-                description:
-                  "Pipelines de datos, análisis, visualización y arquitecturas orientadas a datos.",
+                title: t("about.dataTitle"),
+                description: t("about.dataDesc"),
               },
             ].map((item) => (
               <div
@@ -95,12 +92,8 @@ export function AboutSection() {
 
             {/* Open source badge */}
             <div className="bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl p-5">
-              <p className="text-xs text-zinc-400 uppercase tracking-wider mb-1">
-                Open Source
-              </p>
               <p className="text-sm font-medium">
-                El código de Kipsco es público. Úsalo, apréndelo,
-                adáptalo. Solo da los créditos correspondientes.
+                {t("about.openSource")}
               </p>
             </div>
           </motion.div>
