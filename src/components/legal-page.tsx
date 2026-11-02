@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { LanguageToggle } from "@/components/language-toggle";
 
 type LegalPageProps = {
   kind: "privacy" | "terms";
@@ -24,12 +25,15 @@ export function LegalPage({ kind }: LegalPageProps) {
   return (
     <main className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 py-12 sm:py-16">
-        <Link
-          href="/"
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
-          {t(`${base}.back`)}
-        </Link>
+        <div className="flex items-center justify-between gap-4">
+          <Link
+            href="/"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {t(`${base}.back`)}
+          </Link>
+          <LanguageToggle />
+        </div>
         <article className="mt-8">
           <p className="text-sm text-muted-foreground mb-2">
             {t(`${base}.updated`)}
