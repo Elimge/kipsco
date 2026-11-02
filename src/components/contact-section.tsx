@@ -6,28 +6,30 @@ import { Button } from "@/components/ui/button";
 import { Mail, MessageSquare, Building2 } from "lucide-react";
 
 export function ContactSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const subject = (key: string) =>
+    encodeURIComponent(t(key, { lng: i18n.language }));
   const contactOptions = [
     {
       icon: Building2,
       title: t("contact.enterpriseTitle"),
       description: t("contact.enterpriseDesc"),
       cta: t("contact.enterpriseCta"),
-      href: "mailto:elimge@outlook.com?subject=Implementación empresarial Kipsco",
+      href: `mailto:elimge@outlook.com?subject=${subject("contact.enterpriseSubject")}`,
     },
     {
       icon: MessageSquare,
       title: t("contact.freelanceTitle"),
       description: t("contact.freelanceDesc"),
       cta: t("contact.freelanceCta"),
-      href: "mailto:elimge@outlook.com?subject=Consultoría freelance",
+      href: `mailto:elimge@outlook.com?subject=${subject("contact.freelanceSubject")}`,
     },
     {
       icon: Mail,
       title: t("contact.otherTitle"),
       description: t("contact.otherDesc"),
       cta: t("contact.otherCta"),
-      href: "mailto:elimge@outlook.com?subject=Consulta Kipsco",
+      href: `mailto:elimge@outlook.com?subject=${subject("contact.otherSubject")}`,
     },
   ];
 

@@ -8,7 +8,7 @@ export function SchemaOrg() {
         name: "Kipsco",
         url: "https://kipsco.com",
         description:
-          "Plataforma moderna de evaluación psicométrica y de talento para reclutadores y equipos de RRHH.",
+          "Modern psychometric and talent assessment platform for recruiters and HR teams.",
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         offers: {
@@ -23,41 +23,41 @@ export function SchemaOrg() {
         name: "Kipsco",
         url: "https://kipsco.com",
         description:
-          "Plataforma de evaluación psicométrica y de talento moderna.",
+          "Modern psychometric and talent assessment platform.",
       },
       {
         "@type": "FAQPage",
         mainEntity: [
           {
             "@type": "Question",
-            name: "¿Qué es una prueba psicométrica?",
+            name: "What is a psychometric test?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Una prueba psicométrica es una evaluación científica que mide características psicológicas como personalidad, aptitudes cognitivas y comportamiento laboral para apoyar decisiones de reclutamiento.",
+              text: "A psychometric test is a scientific assessment that measures psychological characteristics such as personality, cognitive skills and work behavior to support recruitment decisions.",
             },
           },
           {
             "@type": "Question",
-            name: "¿Cuánto tiempo toma el test de personalidad laboral?",
+            name: "How long does the work personality test take?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "El test de personalidad laboral de Kipsco toma entre 10 y 15 minutos en completarse.",
+              text: "Kipsco's work personality test takes between 10 and 15 minutes to complete.",
             },
           },
           {
             "@type": "Question",
-            name: "¿Los resultados son confidenciales?",
+            name: "Are the results confidential?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Sí. Todo el procesamiento ocurre directamente en tu navegador. Ningún dato personal se envía a servidores externos.",
+              text: "Yes. All processing happens directly in your browser. No personal data is sent to external servers.",
             },
           },
           {
             "@type": "Question",
-            name: "¿Puedo descargar mis resultados?",
+            name: "Can I download my results?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Sí. Al finalizar la evaluación puedes descargar un reporte profesional en PDF con tus dimensiones, fortalezas y compatibilidad con perfiles laborales.",
+              text: "Yes. When you finish the assessment, you can download a professional PDF report with your dimensions, strengths and job profile compatibility.",
             },
           },
         ],

@@ -21,10 +21,12 @@ import Link from "next/link";
 import { exportResultsToPDF } from "@/services/pdf-export";
 import { PDFReport } from "@/components/results/pdf-report";
 import { useTranslation } from "react-i18next";
+import { localizeResult } from "@/i18n/content";
+import { LanguageToggle } from "@/components/language-toggle";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
@@ -71,14 +73,15 @@ export default function ProfilePage() {
     );
   }
 
-  const date = new Date(result.completedAt).toLocaleDateString("es-CO", {
+  const date = new Date(result.completedAt).toLocaleDateString(i18n.language, {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  const topRole = result.roleCompatibility[0];
-  const topDimension = result.dimensions[0];
+  const displayResult = localizeResult(result, i18n.language);
+  const displayTopRole = displayResult.roleCompatibility[0];
+  const displayTopDimension = displayResult.dimensions[0];
 
   return (
     <main className="min-h-screen bg-muted/20">
@@ -94,6 +97,7 @@ export default function ProfilePage() {
           </Link>
           <span className="text-sm font-medium">{t("profile.title")}</span>
           <div className="flex items-center gap-2">
+            <LanguageToggle />
             <Button
               variant="outline"
               size="sm"
@@ -136,27 +140,26 @@ export default function ProfilePage() {
         >
           <div className="flex items-start justify-between gap-4 mb-6">
             <div>
-              <p className="text-zinc-400 text-sm mb-1">Perfil Psicométrico Laboral</p>
               <p className="text-zinc-400 text-sm mb-1">{t("profile.psychometricProfile")}</p>
               <h1 className="text-2xl font-bold mb-2">
                 {t("profile.high", {
-                  dimension: topDimension?.label ?? t("profile.personality"),
+                  dimension: displayTopDimension?.label ?? t("profile.personality"),
                 })}
               </h1>
               <p className="text-zinc-500 text-xs">{t("profile.evaluatedOn")}</p>
               <p className="text-zinc-300 text-sm max-w-md">
-                {result.overallProfile}
+                {displayResult.overallProfile}
               </p>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-zinc-500 text-xs">Evaluado el</p>
+              <p className="text-zinc-500 text-xs">{t("profile.evaluatedOn")}</p>
               <p className="text-zinc-300 text-xs font-medium">{date}</p>
             </div>
           </div>
 
           {/* Top strengths badges */}
           <div className="flex flex-wrap gap-2 mb-6">
-            {result.topStrengths.map((s) => (
+            {displayResult.topStrengths.map((s) => (
               <Badge
                 key={s}
                 className="bg-white/10 text-white border-white/20 hover:bg-white/20"
@@ -164,7 +167,7 @@ export default function ProfilePage() {
                 {s}
               </Badge>
             ))}
-            {result.topStrengths.length === 0 && (
+            {displayResult.topStrengths.length === 0 && (
               <Badge className="bg-white/10 text-white border-white/20">
                 {t("profile.balanced")}
               </Badge>
@@ -172,17 +175,17 @@ export default function ProfilePage() {
           </div>
 
           {/* Top role */}
-          {topRole && (
+          {displayTopRole && (
             <div className="bg-white/10 rounded-xl px-5 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Briefcase size={18} className="text-zinc-300" />
                 <div>
-                  <p className="text-xs text-zinc-400">Mejor compatibilidad</p>
-                  <p className="text-sm font-semibold">{topRole.role}</p>
+                  <p className="text-xs text-zinc-400">{t("profile.bestMatch")}</p>
+                  <p className="text-sm font-semibold">{displayTopRole.role}</p>
                 </div>
               </div>
               <span className="text-2xl font-bold text-green-400">
-                {topRole.percentage}%
+                {displayTopRole.percentage}%
               </span>
             </div>
           )}
@@ -195,9 +198,9 @@ export default function ProfilePage() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="bg-background rounded-2xl border border-border p-6"
         >
-          <h2 className="text-lg font-bold mb-5">Dimensiones de personalidad</h2>
+          <h2 className="text-lg font-bold mb-5">{t("profile.dimensions")}</h2>
           <div className="flex flex-col gap-5">
-            {result.dimensions.map((dim, index) => (
+            {displayResult.dimensions.map((dim, index) => (
               <motion.div
                 key={dim.dimension}
                 initial={{ opacity: 0, x: 20 }}
@@ -239,11 +242,11 @@ export default function ProfilePage() {
           >
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp size={16} className="text-green-600" />
-              <h2 className="text-sm font-bold text-green-700">Fortalezas</h2>
+              <h2 className="text-sm font-bold text-green-700">{t("profile.strengths")}</h2>
             </div>
-            {result.topStrengths.length > 0 ? (
+            {displayResult.topStrengths.length > 0 ? (
               <ul className="flex flex-col gap-2">
-                {result.topStrengths.map((s) => (
+                {displayResult.topStrengths.map((s) => (
                   <li
                     key={s}
                     className="flex items-center gap-2 text-sm bg-green-500/10 text-green-700 dark:text-green-400 rounded-lg px-3 py-2"
@@ -254,7 +257,7 @@ export default function ProfilePage() {
                 ))}
               </ul>
             ) : (
-              <p className="text-sm text-muted-foreground">Perfil equilibrado.</p>
+              <p className="text-sm text-muted-foreground">{t("profile.balanced")}</p>
             )}
           </motion.div>
 
@@ -266,11 +269,11 @@ export default function ProfilePage() {
           >
             <div className="flex items-center gap-2 mb-4">
               <TrendingDown size={16} className="text-amber-600" />
-              <h2 className="text-sm font-bold text-amber-700">Áreas de desarrollo</h2>
+              <h2 className="text-sm font-bold text-amber-700">{t("profile.areasToGrow")}</h2>
             </div>
-            {result.areasToGrow.length > 0 ? (
+            {displayResult.areasToGrow.length > 0 ? (
               <ul className="flex flex-col gap-2">
-                {result.areasToGrow.map((a) => (
+                {displayResult.areasToGrow.map((a) => (
                   <li
                     key={a}
                     className="flex items-center gap-2 text-sm bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-lg px-3 py-2"
@@ -281,7 +284,7 @@ export default function ProfilePage() {
                 ))}
               </ul>
             ) : (
-              <p className="text-sm text-muted-foreground">Sin áreas críticas.</p>
+              <p className="text-sm text-muted-foreground">{t("profile.noCritical")}</p>
             )}
           </motion.div>
         </div>
@@ -294,10 +297,10 @@ export default function ProfilePage() {
           className="bg-background rounded-2xl border border-border p-6"
         >
           <h2 className="text-lg font-bold mb-5">
-            Compatibilidad con perfiles laborales
+            {t("profile.roleCompatibility")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {result.roleCompatibility.map((role, index) => (
+            {displayResult.roleCompatibility.map((role, index) => (
               <motion.div
                 key={role.role}
                 initial={{ opacity: 0, y: 10 }}
@@ -325,18 +328,18 @@ export default function ProfilePage() {
         {/* Powered by */}
         <div className="text-center py-4">
           <p className="text-xs text-muted-foreground">
-            Perfil generado por{" "}
+            {t("profile.poweredBy")}{" "}
             <Link href="/" className="font-semibold hover:text-foreground transition-colors">
               Kipsco
             </Link>{" "}
-            — Plataforma de evaluación de talento
+            — {t("profile.platform")}
           </p>
         </div>
       </div>
 
       {/* PDF oculto */}
       <div className="absolute -left-[9999px] -top-[9999px] overflow-hidden">
-        <PDFReport result={result} />
+        <PDFReport result={displayResult} />
       </div>
     </main>
   );

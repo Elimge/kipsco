@@ -16,9 +16,11 @@ import { exportResultsToPDF } from "@/services/pdf-export";
 import { Download } from "lucide-react";
 import { User } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { localizeResult } from "@/i18n/content";
+import { LanguageToggle } from "@/components/language-toggle";
 
 export default function ResultsPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const router = useRouter();
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const [isExporting, setIsExporting] = useState(false);
@@ -46,6 +48,8 @@ export default function ResultsPage() {
     );
   }
 
+  const displayResult = localizeResult(result, i18n.language);
+
   return (
     <main className="min-h-screen bg-muted/20">
       {/* Top nav */}
@@ -62,6 +66,7 @@ export default function ResultsPage() {
             {t("results.pageTitle")}
           </span>
           <div className="flex items-center gap-2">
+            <LanguageToggle />
             <Button
               variant="ghost"
               size="sm"
@@ -94,18 +99,18 @@ export default function ResultsPage() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-10 flex flex-col gap-8">
-        <ResultsHeader result={result} />
-        <OverallProfile result={result} />
-        <DimensionsChart result={result} />
+        <ResultsHeader result={displayResult} />
+        <OverallProfile result={displayResult} />
+        <DimensionsChart result={displayResult} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <StrengthsPanel result={result} />
-          <RoleCompatibilityPanel result={result} />
+          <StrengthsPanel result={displayResult} />
+          <RoleCompatibilityPanel result={displayResult} />
         </div>
       </div>
 
       {/* PDF oculto para exportación */}
       <div className="absolute -left-[9999px] -top-[9999px] overflow-hidden">
-        <PDFReport result={result} />
+        <PDFReport result={displayResult} />
       </div>
     </main>
   );

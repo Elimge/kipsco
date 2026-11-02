@@ -20,10 +20,12 @@ import { AddCandidateModal } from "@/components/recruiter/add-candidate-modal";
 import { CandidateComparison } from "@/components/recruiter/candidate-comparison";
 import { Candidate } from "@/types/assessment";
 import { useTranslation } from "react-i18next";
+import { LanguageToggle } from "@/components/language-toggle";
+import { localizeResult } from "@/i18n/content";
 
 export default function RecruiterPage() {
   const { candidates, addCandidate, removeCandidate, clearAll } = useCandidates();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [selectedCandidates, setSelectedCandidates] = useState<string[]>([]);
   const [showComparison, setShowComparison] = useState(false);
@@ -51,6 +53,7 @@ export default function RecruiterPage() {
             {t("recruiter.back")}
           </Link>
           <div className="flex items-center gap-2">
+            <LanguageToggle />
             <Users size={16} className="text-muted-foreground" />
             <span className="text-sm font-medium">{t("recruiter.title")}</span>
             <Badge variant="secondary" className="text-xs">{t("recruiter.beta")}</Badge>
@@ -175,6 +178,7 @@ export default function RecruiterPage() {
                 <CandidateCard
                   key={candidate.id}
                   candidate={candidate}
+                  language={i18n.language}
                   index={index}
                   isSelected={selectedCandidates.includes(candidate.id)}
                   onToggle={() => toggleSelect(candidate.id)}
@@ -220,21 +224,24 @@ export default function RecruiterPage() {
 
 function CandidateCard({
   candidate,
+  language,
   index,
   isSelected,
   onToggle,
   onRemove,
 }: {
   candidate: Candidate;
+  language: string;
   index: number;
   isSelected: boolean;
   onToggle: () => void;
   onRemove: () => void;
 }) {
-  const { t } = useTranslation();
-  const topRole = candidate.result.roleCompatibility[0];
-  const topDim = candidate.result.dimensions[0];
-  const date = new Date(candidate.addedAt).toLocaleDateString("es-CO", {
+  const { t, i18n } = useTranslation();
+  const localizedResult = localizeResult(candidate.result, language);
+  const topRole = localizedResult.roleCompatibility[0];
+  const topDim = localizedResult.dimensions[0];
+  const date = new Date(candidate.addedAt).toLocaleDateString(i18n.language, {
     month: "short",
     day: "numeric",
   });
@@ -291,7 +298,7 @@ function CandidateCard({
 
           {/* Top dimensions */}
           <div className="flex flex-col gap-1.5">
-            {candidate.result.dimensions.slice(0, 3).map((dim) => (
+            {localizedResult.dimensions.slice(0, 3).map((dim) => (
               <div key={dim.dimension} className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground w-24 shrink-0">
                   {dim.label}
@@ -328,7 +335,7 @@ function CandidateCard({
             className="text-muted-foreground hover:text-destructive h-7 w-7 p-0"
             onClick={onRemove}
           >
-            <Trash2 size={14} />
+            <Trash2 size={14} aria-hidden="true" />
           </Button>
         </div>
       </div>

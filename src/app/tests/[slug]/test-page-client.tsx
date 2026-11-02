@@ -9,6 +9,8 @@ import { calculateScores } from "@/lib/scoring";
 import { QuestionCard } from "@/components/question-card";
 import { ProgressHeader } from "@/components/progress-header";
 import { Test } from "@/types/assessment";
+import { localizeTest } from "@/i18n/content";
+import { useTranslation } from "react-i18next";
 
 const TESTS: Record<string, Test> = {
   "test-personalidad-laboral": personalityTest,
@@ -17,7 +19,9 @@ const TESTS: Record<string, Test> = {
 
 export function TestPageClient({ slug }: { slug: string }) {
   const router = useRouter();
+  const { i18n, t } = useTranslation();
   const test = TESTS[slug];
+  const localizedTest = test ? localizeTest(test, i18n.language) : undefined;
 
   const {
     currentQuestion,
@@ -31,7 +35,7 @@ export function TestPageClient({ slug }: { slug: string }) {
     selectAnswer,
     goNext,
     goPrev,
-  } = useAssessment(test?.questions ?? []);
+  } = useAssessment(localizedTest?.questions ?? []);
 
   useEffect(() => {
     if (isCompleted) {
@@ -44,15 +48,19 @@ export function TestPageClient({ slug }: { slug: string }) {
   if (!test) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <p className="text-muted-foreground">Test no encontrado.</p>
+        <p className="text-muted-foreground">{t("testFlow.notFound")}</p>
       </main>
     );
+  }
+
+  if (!localizedTest) {
+    return null;
   }
 
   return (
     <main className="min-h-screen bg-background">
       <ProgressHeader
-        title={test.title}
+        title={localizedTest.title}
         currentIndex={currentIndex}
         total={test.questions.length}
         progress={progress}

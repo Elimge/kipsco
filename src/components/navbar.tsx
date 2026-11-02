@@ -90,26 +90,26 @@ export function Navbar() {
         {isOpen && (
           <div className="md:hidden py-4 flex flex-col gap-4 border-t border-border">
             <a href="#features" className="text-sm text-muted-foreground">
-              Características
+              {t("nav.features")}
             </a>
             <a href="#how-it-works" className="text-sm text-muted-foreground">
-              Cómo funciona
+              {t("nav.howItWorks")}
             </a>
             <a href="#about" className="text-sm text-muted-foreground">
-              Acerca de
+              {t("nav.about")}
             </a>
             <a href="#contact" className="text-sm text-muted-foreground">
-              Contacto
+              {t("nav.contact")}
             </a>
             <Link href="/tests" className="text-sm text-muted-foreground">
               Tests
             </Link>
             <Link href="/recruiter" className="text-sm text-muted-foreground">
-              Reclutadores
+              {t("nav.recruiters")}
             </Link>
             <Link href="/tests">
               <Button size="sm" className="w-full">
-                Comenzar gratis
+                {t("nav.startFree")}
               </Button>
             </Link>
           </div>

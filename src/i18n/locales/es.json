@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "Kipsco — Evaluación de Talento Moderna",
+    "description": "Plataforma moderna de evaluación psicométrica y psicotécnica para reclutamiento, recursos humanos y evaluación de talento en Colombia."
+  },
   "nav": {
     "features": "Características",
     "howItWorks": "Cómo funciona",
@@ -7,6 +11,10 @@
     "about": "Acerca de",
     "contact": "Contacto",
     "startFree": "Comenzar gratis"
+  },
+  "language": {
+    "switchToEnglish": "Cambiar a inglés",
+    "switchToSpanish": "Cambiar a español"
   },
   "hero": {
     "badge": "Evaluación psicométrica moderna",
@@ -73,12 +81,15 @@
     "enterpriseTitle": "Implementación empresarial",
     "enterpriseDesc": "¿Tu empresa necesita una plataforma de evaluación de talento personalizada? Puedo construirla.",
     "enterpriseCta": "Escribir al developer",
+    "enterpriseSubject": "Implementación empresarial Kipsco",
     "freelanceTitle": "Freelance / Consultoría",
     "freelanceDesc": "¿Tienes un proyecto de software o data engineering? Hablemos sobre cómo puedo ayudarte.",
     "freelanceCta": "Contactar",
+    "freelanceSubject": "Consultoría freelance",
     "otherTitle": "Otras consultas",
     "otherDesc": "Sugerencias, bugs, colaboraciones open source o cualquier otra consulta sobre Kipsco.",
     "otherCta": "Enviar mensaje",
+    "otherSubject": "Consulta Kipsco",
     "directEmail": "O escríbeme directamente a"
   },
   "cta": {
@@ -164,6 +175,13 @@
     "poweredBy": "Perfil generado por",
     "platform": "Plataforma de evaluación de talento",
     "loading": "Cargando perfil..."
+  },
+  "pdf": {
+    "generatedOn": "Reporte generado el",
+    "description": "Evaluación basada en el modelo Big Five aplicado al contexto profesional.",
+    "disclaimer": "Este reporte es de carácter orientativo.",
+    "strengths": "Principales fortalezas",
+    "rights": "© 2026 Kipsco. Todos los derechos reservados."
   },
   "recruiter": {
     "title": "Panel de candidatos",

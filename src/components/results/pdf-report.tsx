@@ -1,11 +1,13 @@
 import { AssessmentResult } from "@/types/assessment";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   result: AssessmentResult;
 }
 
 export function PDFReport({ result }: Props) {
-  const date = new Date(result.completedAt).toLocaleDateString("es-CO", {
+  const { t, i18n } = useTranslation();
+  const date = new Date(result.completedAt).toLocaleDateString(i18n.language, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -52,12 +54,12 @@ export function PDFReport({ result }: Props) {
           <p
             style={{ fontSize: "13px", color: "#71717a", margin: "4px 0 0 0" }}
           >
-            Plataforma de Evaluación de Talento
+            {t("profile.platform")}
           </p>
         </div>
         <div style={{ textAlign: "right" }}>
           <p style={{ fontSize: "12px", color: "#71717a", margin: 0 }}>
-            Reporte generado el
+            {t("pdf.generatedOn")}
           </p>
           <p
             style={{
@@ -82,11 +84,10 @@ export function PDFReport({ result }: Props) {
             color: "#18181b",
           }}
         >
-          Test de Personalidad Laboral
+          {t("tests.personalityTitle")}
         </h2>
         <p style={{ fontSize: "13px", color: "#71717a", margin: 0 }}>
-          Evaluación basada en el modelo Big Five aplicado al contexto
-          profesional.
+          {t("pdf.description")}
         </p>
       </div>
 
@@ -108,7 +109,7 @@ export function PDFReport({ result }: Props) {
             margin: "0 0 6px 0",
           }}
         >
-          Perfil general
+          {t("results.generalProfile")}
         </p>
         <p
           style={{
@@ -132,7 +133,7 @@ export function PDFReport({ result }: Props) {
             color: "#18181b",
           }}
         >
-          Dimensiones de personalidad
+          {t("profile.dimensions")}
         </h3>
         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
           {result.dimensions.map((dim) => (
@@ -212,7 +213,7 @@ export function PDFReport({ result }: Props) {
               color: "#18181b",
             }}
           >
-            Principales fortalezas
+            {t("pdf.strengths")}
           </h3>
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             {result.topStrengths.length > 0 ? (
@@ -244,7 +245,7 @@ export function PDFReport({ result }: Props) {
               ))
             ) : (
               <p style={{ fontSize: "12px", color: "#71717a" }}>
-                Perfil equilibrado.
+                {t("profile.balanced")}
               </p>
             )}
           </div>
@@ -258,7 +259,7 @@ export function PDFReport({ result }: Props) {
               color: "#18181b",
             }}
           >
-            Áreas de desarrollo
+            {t("profile.areasToGrow")}
           </h3>
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             {result.areasToGrow.length > 0 ? (
@@ -290,7 +291,7 @@ export function PDFReport({ result }: Props) {
               ))
             ) : (
               <p style={{ fontSize: "12px", color: "#71717a" }}>
-                Sin áreas críticas.
+                {t("profile.noCritical")}
               </p>
             )}
           </div>
@@ -307,7 +308,7 @@ export function PDFReport({ result }: Props) {
             color: "#18181b",
           }}
         >
-          Compatibilidad con perfiles laborales
+          {t("profile.roleCompatibility")}
         </h3>
         <div
           style={{
@@ -387,8 +388,8 @@ export function PDFReport({ result }: Props) {
             textAlign: "right",
           }}
         >
-          Este reporte es de carácter orientativo.
-          <br />© 2026 Kipsco. Todos los derechos reservados.
+          {t("pdf.disclaimer")}
+          <br />{t("pdf.rights")}
         </p>
       </div>
     </div>

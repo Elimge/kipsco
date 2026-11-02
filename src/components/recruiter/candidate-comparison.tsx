@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { localizeResult } from "@/i18n/content";
 
 interface Props {
   candidates: Candidate[];
@@ -24,18 +26,6 @@ const ALL_DIMENSIONS = [
   "attention",
 ] as const;
 
-const DIMENSION_LABELS: Record<string, string> = {
-  openness: "Apertura",
-  conscientiousness: "Responsabilidad",
-  extraversion: "Extraversión",
-  agreeableness: "Amabilidad",
-  neuroticism: "Estabilidad Emocional",
-  logical: "Razonamiento Lógico",
-  numerical: "Aptitud Numérica",
-  verbal: "Razonamiento Verbal",
-  attention: "Atención al Detalle",
-};
-
 const COLORS = [
   "text-blue-600",
   "text-purple-600",
@@ -51,6 +41,7 @@ const BAR_COLORS = [
 ];
 
 export function CandidateComparison({ candidates, onClose }: Props) {
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -66,8 +57,12 @@ export function CandidateComparison({ candidates, onClose }: Props) {
     );
   }
 
+  const localizedCandidates = candidates.map((candidate) => ({
+    ...candidate,
+    result: localizeResult(candidate.result, i18n.language),
+  }));
   const availableDims = ALL_DIMENSIONS.filter((dim) =>
-    candidates.some((c) => getScore(c, dim) > 0)
+    localizedCandidates.some((c) => getScore(c, dim) > 0)
   );
 
   return (
@@ -85,7 +80,7 @@ export function CandidateComparison({ candidates, onClose }: Props) {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-          <h2 className="text-lg font-bold">Comparación de candidatos</h2>
+          <h2 className="text-lg font-bold">{t("recruiter.comparisonTitle")}</h2>
           <button
             onClick={onClose}
             className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
@@ -99,11 +94,11 @@ export function CandidateComparison({ candidates, onClose }: Props) {
           <div
             className="grid gap-4"
             style={{
-              gridTemplateColumns: `200px repeat(${candidates.length}, 1fr)`,
+              gridTemplateColumns: `200px repeat(${localizedCandidates.length}, 1fr)`,
             }}
           >
             <div />
-            {candidates.map((c, i) => (
+            {localizedCandidates.map((c, i) => (
               <div key={c.id} className="text-center">
                 <div
                   className={`w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2 text-sm font-bold ${COLORS[i]}`}
@@ -121,10 +116,10 @@ export function CandidateComparison({ candidates, onClose }: Props) {
           {/* Dimensions comparison */}
           <div className="flex flex-col gap-5">
             <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider">
-              Dimensiones
+              {t("recruiter.comparisonDimensions")}
             </h3>
             {availableDims.map((dim) => {
-              const scores = candidates.map((c) => getScore(c, dim));
+              const scores = localizedCandidates.map((c) => getScore(c, dim));
               const maxScore = Math.max(...scores);
 
               return (
@@ -132,13 +127,13 @@ export function CandidateComparison({ candidates, onClose }: Props) {
                   key={dim}
                   className="grid gap-4 items-center"
                   style={{
-                    gridTemplateColumns: `200px repeat(${candidates.length}, 1fr)`,
+                    gridTemplateColumns: `200px repeat(${localizedCandidates.length}, 1fr)`,
                   }}
                 >
                   <span className="text-sm font-medium">
-                    {DIMENSION_LABELS[dim]}
+                    {localizedCandidates[0]?.result.dimensions.find((d) => d.dimension === dim)?.label}
                   </span>
-                  {candidates.map((c, i) => {
+                  {localizedCandidates.map((c, i) => {
                     const score = getScore(c, dim);
                     const isTop = score === maxScore && score > 0;
                     return (
@@ -172,12 +167,12 @@ export function CandidateComparison({ candidates, onClose }: Props) {
           {/* Role compatibility */}
           <div className="flex flex-col gap-5">
             <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider">
-              Compatibilidad laboral — Top 5 roles
+              {t("recruiter.comparisonRoles")}
             </h3>
-            {candidates[0]?.result.roleCompatibility
+            {localizedCandidates[0]?.result.roleCompatibility
               .slice(0, 5)
               .map((role) => {
-                const scores = candidates.map(
+                const scores = localizedCandidates.map(
                   (c) =>
                     c.result.roleCompatibility.find(
                       (r) => r.role === role.role
@@ -190,11 +185,11 @@ export function CandidateComparison({ candidates, onClose }: Props) {
                     key={role.role}
                     className="grid gap-4 items-center"
                     style={{
-                      gridTemplateColumns: `200px repeat(${candidates.length}, 1fr)`,
+                      gridTemplateColumns: `200px repeat(${localizedCandidates.length}, 1fr)`,
                     }}
                   >
                     <span className="text-sm font-medium">{role.role}</span>
-                    {candidates.map((c, i) => {
+                    {localizedCandidates.map((c, i) => {
                       const score =
                         c.result.roleCompatibility.find(
                           (r) => r.role === role.role
@@ -223,11 +218,11 @@ export function CandidateComparison({ candidates, onClose }: Props) {
 
           {/* Winner summary */}
           <div className="bg-muted/40 rounded-xl p-5">
-            <h3 className="text-sm font-bold mb-3">Resumen</h3>
+            <h3 className="text-sm font-bold mb-3">{t("recruiter.comparisonSummary")}</h3>
             <div className="flex flex-col gap-2">
-              {candidates.map((c, i) => {
+              {localizedCandidates.map((c, i) => {
                 const wins = availableDims.filter((dim) => {
-                  const scores = candidates.map((cc) => getScore(cc, dim));
+                  const scores = localizedCandidates.map((cc) => getScore(cc, dim));
                   return getScore(c, dim) === Math.max(...scores);
                 }).length;
                 return (
@@ -240,11 +235,12 @@ export function CandidateComparison({ candidates, onClose }: Props) {
                       </span>
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      Lidera en{" "}
+                      {t("recruiter.comparisonLeads")}{" "}
                       <span className={`font-bold ${COLORS[i]}`}>
                         {wins}
                       </span>{" "}
-                      de {availableDims.length} dimensiones
+                      {t("recruiter.comparisonOf")} {availableDims.length}{" "}
+                      {t("recruiter.comparisonDimensionsLabel")}
                     </span>
                   </div>
                 );
@@ -253,7 +249,7 @@ export function CandidateComparison({ candidates, onClose }: Props) {
           </div>
 
           <Button variant="outline" onClick={onClose}>
-            Cerrar comparación
+            {t("recruiter.comparisonClose")}
           </Button>
         </div>
       </motion.div>

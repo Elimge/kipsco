@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { LanguageToggle } from "@/components/language-toggle";
 
 interface ProgressHeaderProps {
   title: string;
@@ -32,6 +33,7 @@ export function ProgressHeader({
             </p>
           </div>
           <div className="flex items-center gap-3">
+            <LanguageToggle />
             <span className="text-xs text-muted-foreground">
               {answeredCount}/{total} {t("testFlow.answered")}
             </span>

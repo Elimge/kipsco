@@ -3,7 +3,7 @@ import { TestsContent } from "./tests-content";
 
 export const metadata: Metadata = {
   title: "Tests disponibles",
-  description: "Explora nuestras evaluaciones psicométricas y cognitivas.",
+  description: "Explore our psychometric and cognitive assessments.",
   alternates: { canonical: "https://kipsco.com/tests" },
 };
 

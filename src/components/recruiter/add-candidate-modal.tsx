@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { X, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   open: boolean;
@@ -15,6 +16,7 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (open) {
@@ -30,11 +32,11 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
   function handleSubmit() {
     setError("");
     if (!name.trim()) {
-      setError("El nombre es obligatorio.");
+      setError(t("recruiter.errorName"));
       return;
     }
     if (!url.trim()) {
-      setError("La URL del perfil es obligatoria.");
+      setError(t("recruiter.errorUrl"));
       return;
     }
 
@@ -43,18 +45,18 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
     try {
       const hashIndex = url.indexOf("#data=");
       if (hashIndex === -1) {
-        setError("URL inválida. Asegúrate de copiar la URL completa del perfil.");
+        setError(t("recruiter.errorInvalidUrl"));
         return;
       }
       encoded = url.substring(hashIndex + 6);
     } catch {
-      setError("URL inválida.");
+      setError(t("recruiter.errorInvalidUrl"));
       return;
     }
 
     const success = onAdd(name.trim(), encoded);
     if (!success) {
-      setError("No se pudo leer el perfil. Verifica la URL.");
+      setError(t("recruiter.errorRead"));
       return;
     }
 
@@ -95,7 +97,7 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
             <div className="bg-background text-foreground rounded-2xl border border-border shadow-[0_25px_60px_rgba(0,0,0,0.3)] w-full max-w-md p-6">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-bold">Agregar candidato</h2>
+                <h2 className="text-lg font-bold">{t("recruiter.modalTitle")}</h2>
                 <button
                   onClick={handleClose}
                   className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
@@ -108,20 +110,20 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
               <div className="flex flex-col gap-4">
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">
-                    Nombre del candidato
+                    {t("recruiter.nameLabel")}
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Ej: Juan Pérez"
+                    placeholder={t("recruiter.namePlaceholder")}
                     className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">
-                    URL del perfil Kipsco
+                    {t("recruiter.urlLabel")}
                   </label>
                   <textarea
                     value={url}
@@ -131,7 +133,7 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
                     className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none font-mono"
                   />
                   <p className="text-xs text-muted-foreground mt-1">
-                    Pide al candidato que comparta su URL desde la página de perfil.
+                    {t("recruiter.urlHint")}
                   </p>
                 </div>
 
@@ -150,10 +152,10 @@ export function AddCandidateModal({ open, onClose, onAdd }: Props) {
                   className="flex-1"
                   onClick={handleClose}
                 >
-                  Cancelar
+                  {t("recruiter.cancel")}
                 </Button>
                 <Button className="flex-1" onClick={handleSubmit}>
-                  Agregar candidato
+                  {t("recruiter.add")}
                 </Button>
               </div>
             </div>
