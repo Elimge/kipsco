@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/License-Apache%202.0-green)
 ![Deploy](https://img.shields.io/badge/Deploy-Cloudflare%20Pages-orange)
 
-Plataforma moderna de evaluación psicométrica y psicotécnica orientada al mercado laboral colombiano. Open source, 100% frontend, sin backend requerido.
+Plataforma moderna de evaluación psicométrica y psicotécnica orientada al mercado laboral colombiano. Open source, frontend-first y sin backend propio requerido para la demo.
 
 🌐 **[kipsco.com](https://kipsco.com)**
 
@@ -84,7 +84,7 @@ El motor de evaluación es 100% frontend. Cada respuesta suma puntos a dimension
 3. Se calcula compatibilidad con perfiles laborales colombianos usando distancia ponderada
 4. Los resultados se codifican para la URL compartible
 
-No se envía ningún dato a servidores externos.
+Esta versión no usa un backend propio para almacenar resultados. El navegador, el hosting y los servicios externos que la persona usuaria decida utilizar pueden tratar datos técnicos conforme a sus propias políticas. Consulta [/privacy](https://kipsco.com/privacy) y [/terms](https://kipsco.com/terms) antes de usarla en procesos reales.
 
 > **Privacidad:** el enlace compartible contiene los resultados codificados. Compártelo únicamente con las personas autorizadas a verlos. El enlace no constituye autenticación ni control de acceso.
 
@@ -126,6 +126,13 @@ pnpm lint
 Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 El build genera el sitio estático en `out/`. Para revisar la exportación localmente usa un servidor estático; `pnpm start` no es el flujo principal de despliegue porque el proyecto está configurado con `output: "export"`.
+
+## Información legal
+
+- [Política de privacidad](https://kipsco.com/privacy): tratamiento local, enlaces compartidos y eliminación de datos.
+- [Términos de uso](https://kipsco.com/terms): alcance orientativo, decisiones de contratación y limitaciones.
+- `NOTICE`: inventario de licencias de dependencias generado con `pnpm licenses list --json`.
+- Los resultados no son un diagnóstico psicológico ni deben ser el único criterio para decisiones laborales.
 
 ---
 

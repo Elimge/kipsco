@@ -38,7 +38,7 @@
     "dashboard": { "title": "Dashboard Visual", "description": "Resultados claros con gráficos de radar, barras de progreso y matrices de fortalezas listas para compartir." },
     "pdf": { "title": "Exportación PDF", "description": "Genera reportes profesionales en PDF para compartir con reclutadores, managers o guardar en tu portfolio." },
     "profiles": { "title": "Perfiles Laborales", "description": "Compatibilidad automática con más de 20 perfiles profesionales: Developer, PM, Designer, Líder y más." },
-    "privacy": { "title": "100% Privado", "description": "Todo el procesamiento ocurre en tu navegador. Ningún dato personal se envía a servidores externos." }
+    "privacy": { "title": "Procesamiento local", "description": "El procesamiento ocurre en tu navegador y puedes controlar los datos guardados localmente. Revisa la política de privacidad antes de compartir resultados." }
   },
   "howItWorks": {
     "badge": "Proceso simple",
@@ -56,7 +56,7 @@
     "q2": "¿Cuánto tiempo toma el test de personalidad?",
     "a2": "El test de personalidad laboral de Kipsco toma entre 10 y 15 minutos. Está diseñado para ser ágil sin sacrificar profundidad en los resultados.",
     "q3": "¿Mis datos son privados?",
-    "a3": "Sí, completamente. Todo el procesamiento ocurre en tu navegador. Ningún dato personal se envía a servidores externos. Kipsco es 100% privado por diseño.",
+    "a3": "El procesamiento de esta versión ocurre en tu navegador y no usamos un backend propio para almacenar resultados. Sin embargo, los datos pueden quedar en tu dispositivo o en un enlace compartido; revisa la política de privacidad y comparte los resultados solo con quien corresponda.",
     "q4": "¿Puedo descargar mis resultados?",
     "a4": "Sí. Al finalizar obtienes un reporte profesional en PDF con tus dimensiones de personalidad, fortalezas, áreas de mejora y compatibilidad con perfiles laborales.",
     "q5": "¿Para quién está diseñado Kipsco?",
@@ -111,7 +111,9 @@
     "github": "GitHub",
     "contact": "Contacto",
     "faq": "FAQ",
-    "copyright": "© 2026 Kipsco. Open source bajo licencia Apache 2.0."
+    "copyright": "© 2026 Kipsco. Open source bajo licencia Apache 2.0.",
+    "privacy": "Privacidad",
+    "terms": "Términos de uso"
   },
   "onboarding": {
     "skip": "Omitir",
@@ -278,6 +280,80 @@
     "comparisonDimensionsLabel": "dimensiones",
     "comparisonClose": "Cerrar comparación",
     "high": "Alta {{dimension}}"
+  },
+  "legal": {
+    "privacy": {
+      "back": "← Volver al inicio",
+      "updated": "Última actualización: 2 de noviembre de 2026",
+      "title": "Política de privacidad",
+      "intro": "Esta política explica qué información procesa Kipsco, dónde se guarda y qué control conserva la persona usuaria. Kipsco es una aplicación frontend y esta versión no usa un backend propio para almacenar resultados.",
+      "sections": {
+        "purpose": {
+          "title": "1. Finalidad y responsable",
+          "body": "Kipsco, desarrollado por Miguel Angel Canedo Vanegas, permite realizar evaluaciones orientativas, visualizar resultados y compartir un perfil mediante un enlace. Para consultas sobre privacidad, escribe a elimge@outlook.com."
+        },
+        "data": {
+          "title": "2. Información que puede procesarse",
+          "body": "La aplicación puede procesar respuestas, resultados, fechas, idioma y preferencias de interfaz en el navegador. En modo reclutador también puede guardarse el nombre que introduzcas junto con el resultado que importes desde un enlace de perfil. No introduzcas datos sensibles, identificaciones oficiales ni información de terceros sin autorización y una finalidad legítima."
+        },
+        "storage": {
+          "title": "3. Almacenamiento local y enlaces compartidos",
+          "body": "Los resultados y candidatos se guardan en localStorage del navegador mediante las claves kipsco_result y kipsco_candidates. El idioma y el estado del onboarding usan kipsco_lang y kipsco_onboarded. El perfil compartido contiene el resultado codificado en el fragmento de la URL; no es cifrado, autenticación ni control de acceso. Cualquier persona que reciba el enlace puede consultar su contenido."
+        },
+        "sharing": {
+          "title": "4. Compartir y terceros",
+          "body": "Kipsco no envía intencionalmente estos datos a un backend propio. Al usar el alojamiento, el navegador, el proveedor de hosting, el correo o servicios externos enlazados pueden tratar datos técnicos conforme a sus propias políticas. Compartir un enlace, descargar un PDF o enviarlo por correo queda bajo tu responsabilidad."
+        },
+        "retention": {
+          "title": "5. Conservación y eliminación",
+          "body": "Los datos permanecen en el navegador hasta que los elimines, borres el almacenamiento del sitio o uses las acciones disponibles para repetir el test y limpiar candidatos. Para borrar todo localmente, elimina los datos del sitio kipsco.com desde la configuración del navegador. En modo reclutador, usa la eliminación individual o limpiar todo; esto no puede retirar copias o enlaces que ya hayas compartido."
+        },
+        "rights": {
+          "title": "6. Derechos y uso responsable",
+          "body": "Puedes solicitar información, corrección o eliminación escribiendo al contacto indicado, sin perjuicio de los derechos que correspondan bajo la normativa aplicable. Si gestionas datos de candidatos, debes informarles, contar con una base legal adecuada, limitar el acceso y atender sus solicitudes. No uses resultados como único criterio para contratar, rechazar o clasificar a una persona."
+        },
+        "contact": {
+          "title": "7. Contacto y cambios",
+          "body": "Las consultas sobre esta política pueden enviarse a elimge@outlook.com. Esta política puede actualizarse cuando cambien la aplicación, la normativa o la forma de tratamiento; la fecha de actualización se mostrará en esta página."
+        }
+      }
+    },
+    "terms": {
+      "back": "← Volver al inicio",
+      "updated": "Última actualización: 2 de noviembre de 2026",
+      "title": "Términos de uso",
+      "intro": "Al usar Kipsco aceptas estos términos. Si no estás de acuerdo, no uses la aplicación. Kipsco se ofrece como una herramienta informativa y experimental, no como asesoría psicológica, médica, jurídica o de selección laboral.",
+      "sections": {
+        "purpose": {
+          "title": "1. Servicio y licencia",
+          "body": "El código fuente se distribuye bajo Apache License 2.0, según el archivo LICENSE. Estos términos regulan el uso de la aplicación publicada y no sustituyen las condiciones de esa licencia para redistribuir el código."
+        },
+        "data": {
+          "title": "2. Resultados orientativos",
+          "body": "Las evaluaciones están inspiradas en modelos como Big Five y razonamiento cognitivo, pero no constituyen un diagnóstico psicológico, una certificación profesional ni una medición clínica validada para todas las poblaciones. Los resultados pueden contener aproximaciones, errores o limitaciones."
+        },
+        "storage": {
+          "title": "3. Decisiones de contratación",
+          "body": "No uses Kipsco como único factor para contratar, rechazar, promover, despedir o clasificar candidatos. Las decisiones deben considerar revisión humana cualificada, contexto, entrevistas, experiencia, ajustes razonables y la normativa laboral y de protección de datos aplicable. Quien use recruiter mode es responsable de obtener las autorizaciones necesarias."
+        },
+        "sharing": {
+          "title": "4. Enlaces, nombres y contenido",
+          "body": "Eres responsable de la exactitud y legalidad de los nombres, resultados y enlaces que introduzcas o compartas. No publiques enlaces de perfiles de otras personas sin autorización. El enlace compartido no es privado por sí mismo y cualquiera que lo reciba puede verlo."
+        },
+        "retention": {
+          "title": "5. Disponibilidad y eliminación",
+          "body": "La información guardada en el navegador puede perderse al limpiar el almacenamiento, cambiar de dispositivo o usar herramientas de privacidad. Puedes eliminar resultados y candidatos desde la aplicación o desde la configuración del navegador. No garantizamos la recuperación de datos borrados ni el funcionamiento permanente del servicio."
+        },
+        "rights": {
+          "title": "6. Uso prohibido y responsabilidad",
+          "body": "No uses Kipsco para actividades ilícitas, discriminatorias, invasivas o que puedan causar daño. La aplicación se proporciona tal cual, sin garantía de exactitud, disponibilidad o idoneidad para un propósito concreto. En la medida permitida por la ley, el desarrollador no responde por decisiones, pérdidas o daños derivados del uso de los resultados."
+        },
+        "contact": {
+          "title": "7. Contacto y cambios",
+          "body": "Para preguntas sobre estos términos escribe a elimge@outlook.com. Podemos actualizar estos términos para reflejar cambios del producto o de la normativa; la fecha de actualización se mostrará en esta página."
+        }
+      }
+    }
   },
   "notFound": {
     "title": "Página no encontrada",

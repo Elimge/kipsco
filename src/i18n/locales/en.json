@@ -38,7 +38,7 @@
     "dashboard": { "title": "Visual Dashboard", "description": "Clear results with radar charts, progress bars and strength matrices ready to share." },
     "pdf": { "title": "PDF Export", "description": "Generate professional PDF reports to share with recruiters, managers or save to your portfolio." },
     "profiles": { "title": "Job Profiles", "description": "Automatic compatibility with more than 20 professional profiles: Developer, PM, Designer, Leader and more." },
-    "privacy": { "title": "100% Private", "description": "All processing happens in your browser. No personal data is sent to external servers." }
+    "privacy": { "title": "Local processing", "description": "Processing happens in your browser and you control data stored locally. Review the privacy policy before sharing results." }
   },
   "howItWorks": {
     "badge": "Simple process",
@@ -56,7 +56,7 @@
     "q2": "How long does the personality test take?",
     "a2": "Kipsco's work personality test takes between 10 and 15 minutes. It is designed to be agile without sacrificing depth in results.",
     "q3": "Is my data private?",
-    "a3": "Yes, completely. All processing happens in your browser. No personal data is sent to external servers. Kipsco is 100% private by design.",
+    "a3": "This version processes results in your browser and does not use a first-party backend to store them. However, data may remain on your device or in a shared link; review the privacy policy and share results only with the appropriate people.",
     "q4": "Can I download my results?",
     "a4": "Yes. When you finish you get a professional PDF report with your personality dimensions, strengths, areas for improvement and compatibility with job profiles.",
     "q5": "Who is Kipsco designed for?",
@@ -111,7 +111,9 @@
     "github": "GitHub",
     "contact": "Contact",
     "faq": "FAQ",
-    "copyright": "© 2026 Kipsco. Open source under Apache 2.0 License."
+    "copyright": "© 2026 Kipsco. Open source under Apache 2.0 License.",
+    "privacy": "Privacy",
+    "terms": "Terms of use"
   },
   "onboarding": {
     "skip": "Skip",
@@ -278,6 +280,80 @@
     "comparisonDimensionsLabel": "dimensions",
     "comparisonClose": "Close comparison",
     "high": "High {{dimension}}"
+  },
+  "legal": {
+    "privacy": {
+      "back": "← Back to home",
+      "updated": "Last updated: November 2, 2026",
+      "title": "Privacy policy",
+      "intro": "This policy explains what information Kipsco processes, where it is stored and what control users retain. Kipsco is a frontend application and this version does not use a first-party backend to store results.",
+      "sections": {
+        "purpose": {
+          "title": "1. Purpose and responsible party",
+          "body": "Kipsco, developed by Miguel Angel Canedo Vanegas, lets users take guidance-oriented assessments, view results and share a profile through a link. For privacy questions, contact elimge@outlook.com."
+        },
+        "data": {
+          "title": "2. Information that may be processed",
+          "body": "The application may process answers, results, dates, language and interface preferences in the browser. Recruiter mode may also store the name you enter together with the result imported from a profile link. Do not enter sensitive data, official identifiers or third-party information without authorization and a legitimate purpose."
+        },
+        "storage": {
+          "title": "3. Local storage and shared links",
+          "body": "Results and candidates are stored in browser localStorage under kipsco_result and kipsco_candidates. Language and onboarding state use kipsco_lang and kipsco_onboarded. A shared profile contains the encoded result in the URL fragment; it is not encryption, authentication or access control. Anyone who receives the link may inspect its contents."
+        },
+        "sharing": {
+          "title": "4. Sharing and third parties",
+          "body": "Kipsco does not intentionally send these data to a first-party backend. Hosting, browser, email and linked external services may process technical data under their own policies. Sharing a link, downloading a PDF or sending it by email is your responsibility."
+        },
+        "retention": {
+          "title": "5. Retention and deletion",
+          "body": "Data remains in the browser until you delete it, clear site storage or use the available actions to retake an assessment and clear candidates. To delete all local data, remove kipsco.com site data from your browser settings. In recruiter mode, use individual deletion or clear all; this cannot remove copies or links you have already shared."
+        },
+        "rights": {
+          "title": "6. Rights and responsible use",
+          "body": "You may request information, correction or deletion by contacting the address above, without limiting rights available under applicable law. If you manage candidate data, you must inform candidates, have an appropriate legal basis, restrict access and respond to their requests. Do not use results as the sole criterion to hire, reject or classify a person."
+        },
+        "contact": {
+          "title": "7. Contact and changes",
+          "body": "Privacy questions can be sent to elimge@outlook.com. This policy may change when the application, law or processing practices change; the update date appears on this page."
+        }
+      }
+    },
+    "terms": {
+      "back": "← Back to home",
+      "updated": "Last updated: November 2, 2026",
+      "title": "Terms of use",
+      "intro": "By using Kipsco, you accept these terms. If you do not agree, do not use the application. Kipsco is provided as an informational and experimental tool, not as psychological, medical, legal or hiring advice.",
+      "sections": {
+        "purpose": {
+          "title": "1. Service and license",
+          "body": "The source code is distributed under the Apache License 2.0, as stated in LICENSE. These terms govern use of the published application and do not replace that license for redistributing the code."
+        },
+        "data": {
+          "title": "2. Guidance-oriented results",
+          "body": "The assessments are inspired by models such as the Big Five and cognitive reasoning, but they are not a psychological diagnosis, professional certification or clinical measurement validated for every population. Results may contain approximations, errors or limitations."
+        },
+        "storage": {
+          "title": "3. Hiring decisions",
+          "body": "Do not use Kipsco as the sole factor to hire, reject, promote, dismiss or classify candidates. Decisions should include qualified human review, context, interviews, experience, reasonable accommodations and applicable employment and data protection law. Recruiter mode users are responsible for obtaining required authorizations."
+        },
+        "sharing": {
+          "title": "4. Links, names and content",
+          "body": "You are responsible for the accuracy and legality of names, results and links you enter or share. Do not publish another person's profile link without authorization. A shared link is not private by itself and anyone who receives it may view it."
+        },
+        "retention": {
+          "title": "5. Availability and deletion",
+          "body": "Information stored in the browser may be lost when storage is cleared, a device is changed or privacy tools are used. You can delete results and candidates from the application or browser settings. We do not guarantee recovery of deleted data or permanent service availability."
+        },
+        "rights": {
+          "title": "6. Prohibited use and liability",
+          "body": "Do not use Kipsco for unlawful, discriminatory, invasive or harmful activities. The application is provided as is, without a warranty of accuracy, availability or fitness for a particular purpose. To the extent allowed by law, the developer is not responsible for decisions, losses or damages arising from use of the results."
+        },
+        "contact": {
+          "title": "7. Contact and changes",
+          "body": "For questions about these terms, contact elimge@outlook.com. We may update these terms to reflect product or legal changes; the update date appears on this page."
+        }
+      }
+    }
   },
   "notFound": {
     "title": "Page not found",

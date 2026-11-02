@@ -49,7 +49,7 @@ export function SchemaOrg() {
             name: "Are the results confidential?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. All processing happens directly in your browser. No personal data is sent to external servers.",
+              text: "This version processes results in the browser and does not use a first-party backend to store them. Review Kipsco's privacy policy before sharing results.",
             },
           },
           {
