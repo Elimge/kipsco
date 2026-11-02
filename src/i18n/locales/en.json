@@ -111,6 +111,61 @@
     "faq": "FAQ",
     "copyright": "© 2026 Kipsco. Open source under Apache 2.0 License."
   },
+  "onboarding": {
+    "skip": "Skip",
+    "next": "Next",
+    "prev": "Back",
+    "finish": "Get started",
+    "help": "Help",
+    "step": "Step",
+    "of": "of",
+    "s1": {
+      "title": "Welcome to Kipsco",
+      "description": "Free psychometric and cognitive assessments built for the job market. No sign-up and no accounts."
+    },
+    "s2": {
+      "title": "Pick and take a test",
+      "description": "There is a work personality test and a cognitive aptitude test. Go at your own pace: you can go back and change answers."
+    },
+    "s3": {
+      "title": "See and share your results",
+      "description": "Get charts, strengths and job profile compatibility. Download a PDF or share your profile with a link."
+    },
+    "s4": {
+      "title": "Are you a recruiter?",
+      "description": "In recruiter mode you paste your candidates' profile links and compare them side by side."
+    }
+  },
+  "guide": {
+    "back": "← Back to home",
+    "title": "User guide",
+    "subtitle": "Everything you need to get the most out of Kipsco.",
+    "replayTour": "Replay the welcome tour",
+    "test": {
+      "title": "1. Taking a test",
+      "body": "Go to Tests and choose an assessment. Select one option per question and move on with Next. Use Previous to change an answer. When you finish, your results appear automatically."
+    },
+    "results": {
+      "title": "2. Understanding your results",
+      "body": "The radar and bars show the percentage for each dimension. Strengths are dimensions above 70% and development areas are those below 50%. Job compatibility compares your profile with common role profiles."
+    },
+    "share": {
+      "title": "3. Sharing your profile",
+      "body": "In View profile you will find the Share button, which copies a link with your encoded results. Anyone who opens it sees your profile with no account needed. You can also download a PDF."
+    },
+    "recruiter": {
+      "title": "4. Recruiter mode",
+      "body": "Ask candidates for their profile link, add it with their name, and select two or more to compare dimensions and compatibility side by side."
+    },
+    "privacy": {
+      "title": "5. Your data privacy",
+      "body": "Everything is processed in your browser. Results are stored only on your device (localStorage) and the shareable link contains your encoded results: share it only with people you want to see them."
+    },
+    "limits": {
+      "title": "Scope of the assessments",
+      "body": "The assessments are inspired by models such as the Big Five and are for guidance only. They do not replace professional judgment and should not be the sole factor in a hiring decision."
+    }
+  },
   "tests": {
     "title": "Available assessments",
     "subtitle": "Select the assessment you want to take.",

@@ -4,6 +4,7 @@ import { SchemaOrg } from "@/components/schema-org";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { I18nProvider } from "@/components/i18n-provider";
+import { OnboardingTour } from "@/components/onboarding-tour";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +79,7 @@ export default function RootLayout({
           <ThemeProvider>
             <SchemaOrg />
             {children}
+            <OnboardingTour />
           </ThemeProvider>
         </I18nProvider>
       </body>

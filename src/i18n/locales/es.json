@@ -111,6 +111,61 @@
     "faq": "FAQ",
     "copyright": "© 2026 Kipsco. Open source bajo licencia Apache 2.0."
   },
+  "onboarding": {
+    "skip": "Omitir",
+    "next": "Siguiente",
+    "prev": "Atrás",
+    "finish": "Empezar",
+    "help": "Ayuda",
+    "step": "Paso",
+    "of": "de",
+    "s1": {
+      "title": "Bienvenido a Kipsco",
+      "description": "Evaluaciones psicométricas y cognitivas gratuitas, pensadas para el mercado laboral. Sin registro y sin cuentas."
+    },
+    "s2": {
+      "title": "Elige y responde un test",
+      "description": "Hay un test de personalidad laboral y uno de aptitud cognitiva. Responde a tu ritmo: puedes volver atrás y cambiar respuestas."
+    },
+    "s3": {
+      "title": "Mira y comparte tus resultados",
+      "description": "Obtén gráficos, fortalezas y compatibilidad con perfiles laborales. Descarga un PDF o comparte tu perfil con un enlace."
+    },
+    "s4": {
+      "title": "¿Eres reclutador?",
+      "description": "En el modo reclutador pegas los enlaces de perfil de tus candidatos y los comparas lado a lado."
+    }
+  },
+  "guide": {
+    "back": "← Volver al inicio",
+    "title": "Guía de uso",
+    "subtitle": "Todo lo que necesitas para sacarle provecho a Kipsco.",
+    "replayTour": "Ver el tour de bienvenida",
+    "test": {
+      "title": "1. Realizar un test",
+      "body": "Entra a Tests y elige una evaluación. Selecciona una opción por pregunta y avanza con Siguiente. Puedes volver con Anterior para cambiar una respuesta. Al terminar, verás tus resultados automáticamente."
+    },
+    "results": {
+      "title": "2. Entender tus resultados",
+      "body": "El radar y las barras muestran el porcentaje de cada dimensión. Las fortalezas son las dimensiones por encima del 70% y las áreas de desarrollo las que quedan por debajo del 50%. La compatibilidad laboral compara tu perfil con perfiles de roles comunes en Colombia."
+    },
+    "share": {
+      "title": "3. Compartir tu perfil",
+      "body": "En Ver perfil encuentras el botón Compartir, que copia un enlace con tus resultados codificados. Quien abra el enlace verá tu perfil sin necesidad de cuenta. También puedes descargar un PDF."
+    },
+    "recruiter": {
+      "title": "4. Modo reclutador",
+      "body": "Pide a tus candidatos su enlace de perfil, agrégalo con su nombre y selecciona dos o más para comparar dimensiones y compatibilidad lado a lado."
+    },
+    "privacy": {
+      "title": "5. Privacidad de tus datos",
+      "body": "Todo se procesa en tu navegador. Los resultados se guardan solo en tu dispositivo (localStorage) y el enlace compartible contiene tus resultados codificados: compártelo solo con quien quieras que los vea."
+    },
+    "limits": {
+      "title": "Alcance de las pruebas",
+      "body": "Las evaluaciones están inspiradas en modelos como el Big Five y son orientativas. No reemplazan el criterio de un profesional ni deben ser el único factor en una decisión de contratación."
+    }
+  },
   "tests": {
     "title": "Evaluaciones disponibles",
     "subtitle": "Selecciona la evaluación que deseas realizar.",

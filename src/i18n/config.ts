@@ -8,6 +8,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    lng: "es",
     resources: {
       es: { translation: es },
       en: { translation: en },
@@ -15,7 +16,7 @@ i18n
     fallbackLng: "en",
     supportedLngs: ["es", "en"],
     detection: {
-      order: ["localStorage", "navigator"],
+      order: [],
       caches: ["localStorage"],
       lookupLocalStorage: "kipsco_lang",
     },

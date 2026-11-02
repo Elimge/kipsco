@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import Link from "next/link";
 import { LanguageToggle } from "@/components/language-toggle";
+import { HelpButton } from "@/components/help-button";
 import { useTranslation } from "react-i18next";
 
 export function Navbar() {
@@ -51,6 +52,12 @@ export function Navbar() {
           >
             {t("nav.recruiters")}
           </Link>
+          <Link
+            href="/guide"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {t("guide.title")}
+          </Link>
           <a
             href="#about"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -66,6 +73,7 @@ export function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <HelpButton />
             <LanguageToggle />
             <ThemeToggle />
             <Link href="/tests">
@@ -75,6 +83,7 @@ export function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-2">
+            <HelpButton />
             <LanguageToggle />
             <ThemeToggle />
             <button
@@ -106,6 +115,9 @@ export function Navbar() {
             </Link>
             <Link href="/recruiter" className="text-sm text-muted-foreground">
               {t("nav.recruiters")}
+            </Link>
+            <Link href="/guide" className="text-sm text-muted-foreground">
+              {t("guide.title")}
             </Link>
             <Link href="/tests">
               <Button size="sm" className="w-full">
