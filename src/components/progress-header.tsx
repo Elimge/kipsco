@@ -11,7 +11,6 @@ interface ProgressHeaderProps {
   currentIndex: number;
   total: number;
   progress: number;
-  answeredCount: number;
 }
 
 export function ProgressHeader({
@@ -19,7 +18,6 @@ export function ProgressHeader({
   currentIndex,
   total,
   progress,
-  answeredCount,
 }: ProgressHeaderProps) {
   const { t } = useTranslation();
   return (
@@ -32,13 +30,11 @@ export function ProgressHeader({
               {t("testFlow.question")} {currentIndex + 1} {t("testFlow.of")} {total}
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <LanguageToggle />
-            <span className="text-xs text-muted-foreground">
-              {answeredCount}/{total} {t("testFlow.answered")}
-            </span>
             <Link
               href="/tests"
+              aria-label={t("testFlow.exit")}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               <X size={18} />

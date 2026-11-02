@@ -186,7 +186,7 @@
   "testFlow": {
     "question": "Question",
     "of": "of",
-    "answered": "answered",
+    "exit": "Exit test",
     "prev": "Previous",
     "next": "Next",
     "finish": "View results",

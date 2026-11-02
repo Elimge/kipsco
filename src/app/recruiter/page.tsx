@@ -44,13 +44,13 @@ export default function RecruiterPage() {
     <main className="min-h-screen bg-muted/20">
       {/* Nav */}
       <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex min-w-0 items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft size={16} />
-            {t("recruiter.back")}
+            <span className="truncate">{t("recruiter.back")}</span>
           </Link>
           <div className="flex items-center gap-2">
             <LanguageToggle />
@@ -58,13 +58,10 @@ export default function RecruiterPage() {
             <span className="text-sm font-medium">{t("recruiter.title")}</span>
             <Badge variant="secondary" className="text-xs">{t("recruiter.beta")}</Badge>
           </div>
-          <Button size="sm" className="gap-2" onClick={() => setShowModal(true)}>
+          <Button size="sm" className="ml-auto gap-2" onClick={() => setShowModal(true)}>
             <Plus size={14} />
             {t("recruiter.addCandidate")}
           </Button>
-          <p className="text-xs text-muted-foreground max-w-xs text-center mt-3">
-            {t("recruiter.emptyHint")}
-          </p>
         </div>
       </div>
 

@@ -186,7 +186,7 @@
   "testFlow": {
     "question": "Pregunta",
     "of": "de",
-    "answered": "respondidas",
+    "exit": "Salir del test",
     "prev": "Anterior",
     "next": "Siguiente",
     "finish": "Ver resultados",

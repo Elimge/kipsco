@@ -87,16 +87,18 @@ export default function ProfilePage() {
     <main className="min-h-screen bg-muted/20">
       {/* Nav */}
       <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-3xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
           <Link
             href="/results"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex min-w-0 items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft size={16} />
-            {t("profile.backToResults")}
+            <span className="truncate">{t("profile.backToResults")}</span>
           </Link>
-          <span className="text-sm font-medium">{t("profile.title")}</span>
-          <div className="flex items-center gap-2">
+          <span className="order-3 w-full text-center text-sm font-medium sm:order-none sm:w-auto">
+            {t("profile.title")}
+          </span>
+          <div className="flex w-full flex-wrap justify-end gap-2 sm:w-auto">
             <LanguageToggle />
             <Button
               variant="outline"

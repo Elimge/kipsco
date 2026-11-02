@@ -31,7 +31,6 @@ export function TestPageClient({ slug }: { slug: string }) {
     isLastQuestion,
     isCompleted,
     currentAnswer,
-    answeredCount,
     selectAnswer,
     goNext,
     goPrev,
@@ -64,7 +63,6 @@ export function TestPageClient({ slug }: { slug: string }) {
         currentIndex={currentIndex}
         total={test.questions.length}
         progress={progress}
-        answeredCount={answeredCount}
       />
       <div className="max-w-2xl mx-auto px-4 py-8">
         <QuestionCard
