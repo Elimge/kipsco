@@ -44,13 +44,13 @@ export function HowItWorksSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.15 }}
             >
-              <div className="relative">
+              <div className="flex flex-col items-center gap-1">
+                <span className="text-xs font-bold bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center">
+                  {index + 1}
+                </span>
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
                   <step.icon size={28} className="text-primary" />
                 </div>
-                <span className="absolute -top-2 -right-2 text-xs font-bold bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center">
-                  {index + 1}
-                </span>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-2">{step.title}</h3>

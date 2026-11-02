@@ -28,48 +28,50 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <a
-            href="#features"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {t("nav.features")}
-          </a>
-          <a
-            href="#how-it-works"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {t("nav.howItWorks")}
-          </a>
-          <Link
-            href="/tests"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {t("nav.tests")}
-          </Link>
-          <Link
-            href="/recruiter"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {t("nav.recruiters")}
-          </Link>
-          <Link
-            href="/guide"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {t("guide.title")}
-          </Link>
-          <a
-            href="#about"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {t("nav.about")}
-          </a>
-          <a
-            href="#contact"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {t("nav.contact")}
-          </a>
+          <div className="hidden md:flex items-center gap-6">
+            <a
+              href="#features"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("nav.features")}
+            </a>
+            <a
+              href="#how-it-works"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("nav.howItWorks")}
+            </a>
+            <Link
+              href="/tests"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("nav.tests")}
+            </Link>
+            <Link
+              href="/recruiter"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("nav.recruiters")}
+            </Link>
+            <Link
+              href="/guide"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("guide.title")}
+            </Link>
+            <a
+              href="#about"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("nav.about")}
+            </a>
+            <a
+              href="#contact"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {t("nav.contact")}
+            </a>
+          </div>
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
@@ -87,7 +89,11 @@ export function Navbar() {
             <LanguageToggle />
             <ThemeToggle />
             <button
+              type="button"
               className="p-2 cursor-pointer"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? t("nav.closeMenu") : t("nav.openMenu")}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -97,29 +103,29 @@ export function Navbar() {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden py-4 flex flex-col gap-4 border-t border-border">
-            <a href="#features" className="text-sm text-muted-foreground">
+          <div id="mobile-navigation" className="md:hidden py-4 flex flex-col gap-4 border-t border-border">
+            <a href="#features" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
               {t("nav.features")}
             </a>
-            <a href="#how-it-works" className="text-sm text-muted-foreground">
+            <a href="#how-it-works" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
               {t("nav.howItWorks")}
             </a>
-            <a href="#about" className="text-sm text-muted-foreground">
+            <a href="#about" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
               {t("nav.about")}
             </a>
-            <a href="#contact" className="text-sm text-muted-foreground">
+            <a href="#contact" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
               {t("nav.contact")}
             </a>
-            <Link href="/tests" className="text-sm text-muted-foreground">
-              Tests
+            <Link href="/tests" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
+              {t("nav.tests")}
             </Link>
-            <Link href="/recruiter" className="text-sm text-muted-foreground">
+            <Link href="/recruiter" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
               {t("nav.recruiters")}
             </Link>
-            <Link href="/guide" className="text-sm text-muted-foreground">
+            <Link href="/guide" className="text-sm text-muted-foreground" onClick={() => setIsOpen(false)}>
               {t("guide.title")}
             </Link>
-            <Link href="/tests">
+            <Link href="/tests" onClick={() => setIsOpen(false)}>
               <Button size="sm" className="w-full">
                 {t("nav.startFree")}
               </Button>
