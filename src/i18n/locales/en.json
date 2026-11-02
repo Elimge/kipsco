@@ -33,11 +33,11 @@
   "features": {
     "title": "Everything you need to evaluate talent",
     "subtitle": "A complete platform combining behavioral science with modern user experience.",
-    "psychometric": { "title": "Psychometric Tests", "description": "Evaluate work personality, work style and team compatibility with models based on Big Five and DISC." },
-    "cognitive": { "title": "Cognitive Aptitude", "description": "Measure logical, numerical and verbal reasoning with exercises designed for real professional environments." },
+    "psychometric": { "title": "Work Personality", "description": "Assess the five Big Five dimensions in a professional context: openness, conscientiousness, extraversion, agreeableness and emotional stability." },
+    "cognitive": { "title": "Cognitive Aptitude", "description": "Measure numerical, logical and verbal reasoning, plus attention to detail, with aptitude exercises." },
     "dashboard": { "title": "Visual Dashboard", "description": "Clear results with radar charts, progress bars and strength matrices ready to share." },
     "pdf": { "title": "PDF Export", "description": "Generate professional PDF reports to share with recruiters, managers or save to your portfolio." },
-    "profiles": { "title": "Job Profiles", "description": "Automatic compatibility with more than 20 professional profiles: Developer, PM, Designer, Leader and more." },
+    "profiles": { "title": "Job Profiles", "description": "Compare your compatibility with 10 assessed roles: sales, HR, administration, finance, operations, project management, customer service, production, accounts and marketing." },
     "privacy": { "title": "Local processing", "description": "Processing happens in your browser and you control data stored locally. Review the privacy policy before sharing results." }
   },
   "howItWorks": {

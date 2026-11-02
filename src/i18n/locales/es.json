@@ -33,11 +33,11 @@
   "features": {
     "title": "Todo lo que necesitas para evaluar talento",
     "subtitle": "Una plataforma completa que combina ciencia del comportamiento con experiencia de usuario moderna.",
-    "psychometric": { "title": "Tests Psicométricos", "description": "Evalúa personalidad laboral, estilo de trabajo y compatibilidad de equipo con modelos basados en Big Five y DISC." },
-    "cognitive": { "title": "Aptitud Cognitiva", "description": "Mide razonamiento lógico, numérico y verbal con ejercicios diseñados para entornos profesionales reales." },
+    "psychometric": { "title": "Personalidad Laboral", "description": "Evalúa las cinco dimensiones del modelo Big Five en el contexto profesional: apertura, responsabilidad, extraversión, amabilidad y estabilidad emocional." },
+    "cognitive": { "title": "Aptitud Cognitiva", "description": "Mide razonamiento numérico, lógico y verbal, además de atención al detalle, con ejercicios de aptitud." },
     "dashboard": { "title": "Dashboard Visual", "description": "Resultados claros con gráficos de radar, barras de progreso y matrices de fortalezas listas para compartir." },
     "pdf": { "title": "Exportación PDF", "description": "Genera reportes profesionales en PDF para compartir con reclutadores, managers o guardar en tu portfolio." },
-    "profiles": { "title": "Perfiles Laborales", "description": "Compatibilidad automática con más de 20 perfiles profesionales: Developer, PM, Designer, Líder y más." },
+    "profiles": { "title": "Perfiles Laborales", "description": "Compara tu compatibilidad con 10 roles evaluados: comercial, RRHH, administrativo, financiero, operaciones, proyectos, atención al cliente, producción, cuentas y marketing." },
     "privacy": { "title": "Procesamiento local", "description": "El procesamiento ocurre en tu navegador y puedes controlar los datos guardados localmente. Revisa la política de privacidad antes de compartir resultados." }
   },
   "howItWorks": {

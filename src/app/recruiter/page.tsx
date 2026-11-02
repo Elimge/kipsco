@@ -87,7 +87,7 @@ export default function RecruiterPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="grid grid-cols-3 gap-4"
+            className="grid grid-cols-3 gap-2 sm:gap-4"
           >
             {[
               {
@@ -111,14 +111,17 @@ export default function RecruiterPage() {
             ].map(({ label, value, icon: Icon }) => (
               <div
                 key={label}
-                className="bg-background rounded-xl border border-border p-4 flex items-center gap-3"
+                className="bg-background min-w-0 rounded-xl border border-border p-3 sm:p-4 flex items-center gap-2 sm:gap-3"
               >
-                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <Icon size={16} className="text-primary" />
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <Icon size={14} className="sm:hidden text-primary" />
+                  <Icon size={16} className="hidden sm:block text-primary" />
                 </div>
-                <div>
-                  <p className="text-xl font-bold">{value}</p>
-                  <p className="text-xs text-muted-foreground">{label}</p>
+                <div className="min-w-0">
+                  <p className="text-lg sm:text-xl font-bold">{value}</p>
+                  <p className="text-[11px] sm:text-xs leading-tight text-muted-foreground break-words">
+                    {label}
+                  </p>
                 </div>
               </div>
             ))}
@@ -253,7 +256,7 @@ function CandidateCard({
         isSelected ? "border-primary" : "border-border"
       }`}
     >
-      <div className="p-5 flex items-start gap-4">
+      <div className="p-4 sm:p-5 flex flex-wrap items-start gap-3 sm:flex-nowrap sm:gap-4">
         {/* Checkbox */}
         <button
           onClick={onToggle}
@@ -281,9 +284,9 @@ function CandidateCard({
         </div>
 
         {/* Info */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <h3 className="font-semibold text-sm">{candidate.name}</h3>
+        <div className="flex-1 min-w-0 basis-[calc(100%-5rem)] sm:basis-auto">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 mb-1">
+            <h3 className="font-semibold text-sm break-words">{candidate.name}</h3>
             <span className="text-xs text-muted-foreground">{date}</span>
           </div>
 
@@ -297,7 +300,7 @@ function CandidateCard({
           <div className="flex flex-col gap-1.5">
             {localizedResult.dimensions.slice(0, 3).map((dim) => (
               <div key={dim.dimension} className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground w-24 shrink-0">
+                <span className="text-xs leading-tight text-muted-foreground w-24 shrink-0 whitespace-normal">
                   {dim.label}
                 </span>
                 <Progress value={dim.percentage} className="h-1.5 flex-1" />
@@ -310,11 +313,11 @@ function CandidateCard({
         </div>
 
         {/* Role + actions */}
-        <div className="flex flex-col items-end gap-3 shrink-0">
+        <div className="w-full flex flex-row items-start justify-between gap-3 border-t border-border pt-3 sm:w-auto sm:flex-col sm:items-end sm:border-0 sm:pt-0 shrink-0">
           {topRole && (
-            <div className="text-right">
+            <div className="text-left sm:text-right min-w-0">
               <p className="text-xs text-muted-foreground">{t("recruiter.bestRole")}</p>
-              <p className="text-xs font-semibold">{topRole.role}</p>
+              <p className="text-xs font-semibold break-words">{topRole.role}</p>
               <p
                 className={`text-sm font-bold ${
                   topRole.percentage >= 75
