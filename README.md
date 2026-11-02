@@ -24,8 +24,11 @@ Kipsco permite a reclutadores, equipos de RRHH y candidatos realizar evaluacione
 - **Perfil compartible** — URL única con resultados codificados, sin backend
 - **Exportación PDF** — Reporte profesional descargable
 - **Recruiter Mode** — Panel para comparar candidatos lado a lado
+- **Guía de uso** — Manual disponible en `/guide` con acceso al tour de bienvenida
+- **Onboarding** — Tour de cuatro pasos para usuarios nuevos, reabrible desde el botón de ayuda
+- **Español ↔ inglés** — Catálogos de interfaz y localización de preguntas, opciones, dimensiones, fortalezas y roles
 - **Modo oscuro** — Tema claro/oscuro/sistema
-- **SEO optimizado** — SSG, schema.org, sitemap, OpenGraph
+- **SEO estático** — SSG, schema.org, sitemap y OpenGraph; la metadata prerenderizada usa una variante por defecto y el contenido visible cambia en el cliente
 
 ---
 
@@ -52,6 +55,7 @@ Deploy:       Cloudflare Pages
 src/
  ├── app/                  # Rutas Next.js (App Router)
  │    ├── page.tsx         # Landing page
+ │    ├── guide/            # Guía de uso y onboarding
  │    ├── tests/           # Lista de tests y flujo
  │    ├── results/         # Dashboard de resultados
  │    ├── profile/         # Perfil profesional compartible
@@ -60,6 +64,7 @@ src/
  │    └── results/         # Componentes del dashboard
  │    └── recruiter/       # Componentes del recruiter mode
  ├── data/                 # Datasets de preguntas por test
+ ├── i18n/                 # Configuración, catálogos y adaptadores ES/EN
  ├── features/             # Módulos por dominio (futuro)
  ├── hooks/                # Custom hooks (useAssessment, useCandidates)
  ├── lib/                  # Utilidades core (scoring, utils)
@@ -77,9 +82,19 @@ El motor de evaluación es 100% frontend. Cada respuesta suma puntos a dimension
 1. Se calcula el porcentaje por dimensión
 2. Se identifican fortalezas (≥70%) y áreas de mejora (<50%)
 3. Se calcula compatibilidad con perfiles laborales colombianos usando distancia ponderada
-4. Los resultados se codifican en base64 para la URL compartible
+4. Los resultados se codifican para la URL compartible
 
 No se envía ningún dato a servidores externos.
+
+> **Privacidad:** el enlace compartible contiene los resultados codificados. Compártelo únicamente con las personas autorizadas a verlos. El enlace no constituye autenticación ni control de acceso.
+
+### Persistencia local
+
+Kipsco utiliza estas claves de `localStorage`:
+
+- `kipsco_lang`: idioma seleccionado (`es` o `en`)
+- `kipsco_result`: último resultado generado en el dispositivo
+- `kipsco_onboarded`: indica que el tour inicial fue omitido o completado
 
 ---
 
@@ -103,19 +118,26 @@ pnpm run dev
 
 # Build de producción
 pnpm build
+
+# Validar lint
+pnpm lint
 ```
 
 Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+
+El build genera el sitio estático en `out/`. Para revisar la exportación localmente usa un servidor estático; `pnpm start` no es el flujo principal de despliegue porque el proyecto está configurado con `output: "export"`.
 
 ---
 
 ## Cómo agregar un nuevo test
 
-1. Crea el dataset en `src/data/tu-test.ts` siguiendo la estructura de `personality-test.ts`
-2. Agrega los perfiles de compatibilidad en `src/lib/scoring.ts`
-3. Registra el test en `src/app/tests/[slug]/test-page-client.tsx`
-4. Agrega el slug a `generateStaticParams` en `src/app/tests/[slug]/page.tsx`
-5. Activa el test en `src/app/tests/page.tsx`
+1. Crea el dataset en `src/data/tu-test.ts` siguiendo la estructura de `personality-test.ts`. Conserva IDs estables para preguntas, opciones y respuestas correctas.
+2. Agrega los perfiles de compatibilidad en `src/lib/scoring.ts` si el test utiliza esos perfiles.
+3. Registra el test en `src/app/tests/[slug]/test-page-client.tsx`.
+4. Agrega el slug a `generateStaticParams` en `src/app/tests/[slug]/page.tsx`.
+5. Activa el test en `src/app/tests/page.tsx`.
+6. Agrega las preguntas y opciones traducidas al inglés en `src/i18n/content.ts` y valida que la traducción conserve el significado y el scoring.
+7. Actualiza los catálogos `src/i18n/locales/es.json` y `src/i18n/locales/en.json` si incorporas textos de interfaz.
 
 ---
 
@@ -123,9 +145,11 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 Kipsco está diseñado para ser agnóstico al backend. Para añadir persistencia:
 
-1. Reemplaza `localStorage` en `src/hooks/useAssessment.ts` con llamadas a tu API
+1. Reemplaza el almacenamiento local de resultados en las vistas correspondientes con llamadas a tu API
 2. Reemplaza la codificación base64 en `src/utils/share.ts` con IDs de base de datos
 3. El motor de scoring en `src/lib/scoring.ts` puede migrarse a cualquier backend
+
+Si se incorpora autenticación o datos sensibles, el enlace compartible debe dejar de exponer resultados codificados en el fragmento de URL y pasar a un mecanismo con autorización.
 
 Endpoints mínimos sugeridos:
 ```
